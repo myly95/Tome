@@ -1,0 +1,46 @@
+# Tòme : publie le site sur GitHub Pages à chaque modification du dépôt.
+# Si de nouveaux articles ont été déposés dans tome/contenu/encyclopedie/ (.md ou .docx),
+# ils sont d'abord convertis et ajoutés à l'Encyclopédie.
+name: Publier le site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  publier:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploiement.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Articles de l'Encyclopédie
+        working-directory: tome
+        run: |
+          if ls contenu/encyclopedie/*.md contenu/encyclopedie/*.docx >/dev/null 2>&1; then
+            pip install -q markdown mammoth
+            python3 _source/ajouter_articles.py || echo "::warning::Un article n'a pas pu être converti (voir le détail ci-dessus)."
+            git config user.name "Tòme (automatique)"
+            git config user.email "actions@users.noreply.github.com"
+            git add -A encyclopedie js/encyclopedie-data.js _source/pages/encyclopedie encyclopedie.html
+            if ! git diff --cached --quiet; then git commit -m "Encyclopédie : articles mis à jour" && git push; fi
+          fi
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: tome
+      - id: deploiement
+        uses: actions/deploy-pages@v4
