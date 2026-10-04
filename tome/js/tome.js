@@ -6,8 +6,8 @@
  *             une réponse et les espaces connectés s'ouvrent sans jeton. Passer à false en production.
  */
 window.TOME_CONFIG = Object.assign({
-  apiBase: '',
-  demo: true,
+  apiBase: 'https://tome-api-v5pw.onrender.com',
+  demo: false,
   /* Pyodide (Python dans le navigateur). Pour un usage hors ligne, héberger ces fichiers sur votre serveur et changer l'URL. */
   pyodideBase: 'https://cdn.jsdelivr.net/pyodide/v0.26.4/full/',
   /* webR (R dans le navigateur) et sql.js (SQLite dans le navigateur) */
