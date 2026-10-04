@@ -1130,3 +1130,7 @@ table.saisie input.bad { color: var(--accent); background: var(--accent-soft); }
 .linkish { background: none; border: none; padding: 0; font: inherit; color: var(--accent); font-weight: 600; cursor: pointer; text-decoration: underline; }
 .article-body .table-wrap { overflow-x: auto; margin: 18px 0; }
 .article-body figure img { max-width: 100%; height: auto; border-radius: 10px; }
+a.stat { display: block; color: inherit; transition: border-color .15s ease, transform .15s ease; }
+a.stat:hover { border-color: var(--ink); }
+#tb-reel .list a.row { color: inherit; }
+#tb-reel .list a.row:hover .t { color: var(--accent); }
