@@ -33,7 +33,7 @@
         const r = await fetch(`${CFG.apiBase || ''}/api/ecoles?q=${encodeURIComponent(q)}${dep ? '&departement=' + encodeURIComponent(dep) : ''}`, { headers: { Accept: 'application/json' } });
         if (!r.ok) throw 0;
         const d = await r.json();
-        if (!d.total) { fermer(); return; } // liste pas encore importée : texte libre
+        if (!d.total) { fermer(); etat.textContent = 'La liste des écoles n’est pas encore en ligne : écrivez simplement le nom de votre établissement.'; return; } // liste pas encore importée : texte libre
         let res = d.ecoles;
         if (!res.length && dep) { // rien dans ce département : chercher partout
           const r2 = await fetch(`${CFG.apiBase || ''}/api/ecoles?q=${encodeURIComponent(q)}`); res = (await r2.json()).ecoles;

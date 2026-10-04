@@ -64,6 +64,11 @@
       <div class="panels" style="margin-top:12px;">
         <div class="panel">
           <h3 class="serif" style="font-size:19px;margin-bottom:8px;">Liste de référence</h3>
+          <div class="card" style="padding:14px 16px;margin-bottom:16px;display:grid;gap:8px;">
+            <strong>Toutes les écoles d'Haïti, en un clic</strong>
+            <p class="small">Importe les écoles, lycées et universités d'Haïti connus d'OpenStreetMap (données ouvertes, © les contributeurs OpenStreetMap), classés par département. Cela peut prendre une ou deux minutes. Les doublons sont ignorés : vous pouvez relancer plus tard pour récupérer les nouvelles écoles. La liste n'est pas parfaite : complétez-la ensuite avec votre propre fichier.</p>
+            <div><button class="tbtn primary" id="a-osm">Importer depuis OpenStreetMap</button></div>
+          </div>
           <p class="small" style="margin-bottom:12px;">Importez un fichier CSV ou Excel avec les colonnes <strong>nom</strong>, <strong>commune</strong>, <strong>departement</strong> et, si vous l'avez, <strong>type</strong> (public, privé, congréganiste…). Les doublons (même nom, même commune) sont ignorés.</p>
           <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;"><input type="file" id="a-file" accept=".csv,.xlsx,.xls,.ods"><select id="a-mode"><option value="ajouter">Ajouter à la liste</option><option value="remplacer">Remplacer la liste</option></select><button class="tbtn primary" id="a-import">Importer</button></div>
           <p class="small" id="a-res" style="margin-top:10px;"></p>

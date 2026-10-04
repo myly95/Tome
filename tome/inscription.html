@@ -62,6 +62,17 @@
               <div class="field"><label for="nom">Nom</label><input id="nom" name="nom" autocomplete="family-name" required></div>
             </div>
 
+            <div class="addr-preview" id="addr-box" hidden>
+              <div class="k">Votre adresse Tòme</div>
+              <div class="v"><span id="addr-val">…</span> <span class="chip" id="addr-etat"></span></div>
+              <p class="small" id="addr-note"></p>
+              <button type="button" class="linkish" id="addr-change">Choisir une autre adresse</button>
+              <div class="addr-custom" id="addr-custom" hidden>
+                <div class="install-row"><input id="addr-input" autocapitalize="none" spellcheck="false" placeholder="prenom.nom" aria-label="Adresse Tòme souhaitée"><span class="addr-dom" id="addr-dom">@tome</span></div>
+                <button type="button" class="linkish" id="addr-auto">Revenir à l'adresse proposée</button>
+              </div>
+            </div>
+
             <div class="role-fields" data-for="eleve">
               <div class="form-row">
                 <div class="field"><label for="classe">Classe</label><select id="classe" name="classe"><option>7e AF</option><option>8e AF</option><option>9e AF</option><option>NS1</option><option>NS2</option><option>NS3</option><option>NS4</option><option>Université</option></select></div>
@@ -92,7 +103,7 @@
               </div>
             </div>
 
-            <div class="field"><label for="email">Adresse e-mail</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="vous@exemple.com"></div>
+            <div class="field"><label for="email"><span id="email-label">Adresse e-mail</span></label><input id="email" name="email" type="email" autocomplete="email" placeholder="vous@exemple.com"><span class="hint" id="email-hint"></span></div>
             <div class="field"><label for="password">Mot de passe</label><input id="password" name="password" type="password" autocomplete="new-password" minlength="8" required><span class="hint">8 caractères minimum.</span></div>
             <label class="check"><input type="checkbox" name="cgu" required> J'accepte les conditions d'utilisation et la politique de confidentialité de Tòme.</label>
             <button type="submit" class="btn btn-primary btn-block">Créer mon compte</button>
@@ -135,6 +146,53 @@ document.addEventListener('DOMContentLoaded', () => {
   if (pre && form.querySelector('#r-' + pre)) form.querySelector('#r-' + pre).checked = true;
 
   const role = () => form.role.value;
+
+  /* ---------- Adresse Tòme : aperçu et choix ---------- */
+  const api = TOME_CONFIG.apiBase || '';
+  const adresse = { perso: '', ok: false };
+  const $ = id => document.getElementById(id);
+  let tA;
+  const getJ = async q => { const r = await fetch(api + '/api/auth/adresse?' + q); if (!r.ok) throw 0; return r.json(); };
+  async function apercu() {
+    if (adresse.perso) return;
+    const r = role();
+    const q = new URLSearchParams({ role: r, prenom: $('prenom').value.trim(), nom: $('nom').value.trim(), nom_ecole: $('nom-ecole').value.trim(), organisation: $('organisation').value.trim() });
+    try {
+      const d = await getJ(q);
+      $('addr-box').hidden = false;
+      if (!d.adresse) { $('addr-val').textContent = 'prenom.nom@…'; $('addr-etat').textContent = ''; $('addr-etat').className = 'chip'; $('addr-note').textContent = 'Elle se crée à partir de votre prénom et de votre nom.'; return; }
+      $('addr-val').textContent = d.adresse;
+      $('addr-dom').textContent = '@' + d.adresse.split('@')[1];
+      $('addr-etat').textContent = 'Disponible'; $('addr-etat').className = 'chip ok';
+      $('addr-note').textContent = d.disponible ? 'C’est avec elle que vous vous connecterez et recevrez vos messages.' : `${d.base} est déjà prise : nous vous proposons celle-ci. Vous pouvez aussi en choisir une autre.`;
+    } catch (e) { /* sans serveur (démonstration) : pas d'aperçu */ }
+  }
+  const planifier = () => { clearTimeout(tA); tA = setTimeout(apercu, 350); };
+  ['prenom', 'nom', 'nom-ecole', 'organisation'].forEach(id => $(id).addEventListener('input', planifier));
+  $('addr-change').addEventListener('click', () => { $('addr-custom').hidden = false; $('addr-change').hidden = true; $('addr-input').value = $('addr-val').textContent.split('@')[0].replace(/…/, ''); $('addr-input').focus(); verifier(); });
+  $('addr-auto').addEventListener('click', () => { adresse.perso = ''; adresse.ok = false; $('addr-custom').hidden = true; $('addr-change').hidden = false; apercu(); });
+  let tV;
+  async function verifier() {
+    const v = $('addr-input').value.trim().toLowerCase();
+    adresse.perso = v; adresse.ok = false;
+    if (!v) { adresse.perso = ''; return; }
+    try {
+      const d = await getJ(new URLSearchParams({ souhait: v }));
+      if ($('addr-input').value.trim().toLowerCase() !== v) return;
+      if (!d.valide) { $('addr-val').textContent = v + $('addr-dom').textContent; $('addr-etat').textContent = 'Invalide'; $('addr-etat').className = 'chip accent'; $('addr-note').textContent = d.message; return; }
+      $('addr-val').textContent = d.adresse;
+      adresse.perso = d.adresse.split('@')[0];
+      if (d.disponible) { adresse.ok = true; $('addr-etat').textContent = 'Disponible'; $('addr-etat').className = 'chip ok'; $('addr-note').textContent = 'Cette adresse est libre.'; }
+      else { $('addr-etat').textContent = 'Déjà prise'; $('addr-etat').className = 'chip accent'; $('addr-note').textContent = `Essayez par exemple ${d.suggestion}.`; }
+    } catch (e) {}
+  }
+  $('addr-input').addEventListener('input', () => { clearTimeout(tV); tV = setTimeout(verifier, 350); });
+  const majEmail = () => {
+    const req = role() === 'ecole' || role() === 'partenaire';
+    $('email-label').textContent = req ? 'Adresse e-mail' : 'Adresse e-mail personnelle (facultatif)';
+    $('email-hint').textContent = req ? 'Pour vous joindre au sujet de votre compte.' : 'Pas obligatoire : vous vous connectez avec votre adresse Tòme. Utile si un jour vous oubliez votre mot de passe.';
+    $('email').required = req;
+  };
   const goto = n => {
     s1.hidden = n !== 1; s2.hidden = n !== 2;
     document.getElementById('dot2').classList.toggle('on', n === 2);
@@ -142,6 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('.role-fields').forEach(f => f.classList.toggle('show', f.dataset.for === role()));
       document.getElementById('step2-title').textContent = titles[role()];
       document.getElementById('prenom').focus();
+      majEmail(); apercu();
     }
   };
   document.getElementById('next').addEventListener('click', () => goto(2));
@@ -161,7 +220,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const choix = r === 'eleve' ? choixEleve : r === 'ecole' ? choixEcole : null;
     if (choix && choix.id()) data.ecole_id = choix.id();
     if (!data.prenom || !data.nom) return show('Indiquez votre prénom et votre nom.');
-    if (!/^\S+@\S+\.\S+$/.test(data.email)) return show('Entrez une adresse e-mail valide.');
+    const emailRequis = r === 'ecole' || r === 'partenaire';
+    if (!data.email && emailRequis) return show('Indiquez une adresse e-mail.');
+    if (data.email && !/^\S+@\S+\.\S+$/.test(data.email)) return show('Entrez une adresse e-mail valide, ou laissez la case vide.');
+    if (!data.email) delete data.email;
+    if (adresse.perso) {
+      if (!adresse.ok) return show('Choisissez une adresse Tòme disponible, ou revenez à l\'adresse proposée.');
+      data.adresse_souhaitee = adresse.perso;
+    }
     if ((data.password || '').length < 8) return show('Le mot de passe doit contenir au moins 8 caractères.');
     if (!form.cgu.checked) return show('Vous devez accepter les conditions d\'utilisation.');
     const btn = form.querySelector('button[type=submit]');

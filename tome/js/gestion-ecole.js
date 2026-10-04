@@ -288,6 +288,16 @@ document.addEventListener('DOMContentLoaded', async () => {
   async function adec(id, decision, note = '') {
     try { await Auth.api('/api/ecoles/rattachements/' + id, { method: 'POST', body: { decision, note } }); toast(decision === 'valider' ? 'Compte école validé.' : 'Compte refusé.'); loadAdmin(); } catch (e) { toast(e.message, true); }
   }
+  $('#a-osm').addEventListener('click', async e => {
+    if (!confirm('Importer les écoles d’Haïti depuis OpenStreetMap ? Cela peut prendre une ou deux minutes.')) return;
+    e.target.disabled = true; const t0 = e.target.textContent; e.target.textContent = 'Import en cours…';
+    try {
+      const r = await Auth.api('/api/ecoles/admin/osm', { method: 'POST' });
+      $('#a-res').textContent = `OpenStreetMap : ${r.recues} écoles reçues, ${r.ajoutees} ajoutées, ${r.ignorees} déjà présentes ou en double. La liste compte ${r.total} écoles.`;
+      loadAdmin();
+    } catch (er) { toast(er.message, true); }
+    finally { e.target.disabled = false; e.target.textContent = t0; }
+  });
   $('#a-import').addEventListener('click', async e => {
     const f = $('#a-file').files[0];
     if (!f) return toast('Choisissez un fichier CSV ou Excel.', true);
@@ -295,7 +305,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     try {
       const t = await lireTableau(f);
       const h = t[0].map(x => norm(x)), col = (...n) => h.findIndex(x => n.includes(x));
-      const iN = col('nom', 'nom de l\'ecole', 'ecole', 'etablissement', 'nom de l\'etablissement'), iC = col('commune', 'ville'), iD = col('departement', 'dept', 'dep'), iT = col('type', 'secteur', 'statut');
+      const iN = col('nom', 'nom de l\'ecole', 'ecole', 'etablissement', 'nom de l\'etablissement', 'name', 'name:fr', 'nom_ecole'), iC = col('commune', 'ville', 'addr:city', 'addr_city', 'city'), iD = col('departement', 'dept', 'dep', 'addr:state', 'state', 'adm1', 'adm1_fr', 'is_in:state'), iT = col('type', 'secteur', 'statut', 'amenity');
       if (iN < 0) throw new Error('Colonne « nom » introuvable dans la première ligne.');
       const ecoles = t.slice(1).map(r => ({ nom: String(r[iN] ?? '').trim(), commune: iC >= 0 ? String(r[iC] ?? '').trim() : '', departement: iD >= 0 ? String(r[iD] ?? '').trim() : '', type: iT >= 0 ? String(r[iT] ?? '').trim() : '' })).filter(x => x.nom);
       const mode = $('#a-mode').value;
