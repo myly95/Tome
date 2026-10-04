@@ -132,7 +132,7 @@
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('signup-form');
-  const choixEleve = TomeEcoleChoix(document.getElementById('ecole-eleve'), { departement: () => document.getElementById('dep-eleve').value });
+  const choixEleve = TomeEcoleChoix(document.getElementById('ecole-eleve'), { departement: () => document.getElementById('dep-eleve').value, departementEl: document.getElementById('dep-eleve') });
   const choixEcole = TomeEcoleChoix(document.getElementById('nom-ecole'), {
     departement: () => '',
     onChoix: e => { if (!e) return; document.getElementById('commune').value = e.commune || ''; if (e.departement) document.getElementById('dep-ecole').value = e.departement; }

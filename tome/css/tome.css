@@ -1143,3 +1143,6 @@ a.stat:hover { border-color: var(--ink); }
 .addr-preview .linkish { justify-self: start; font-size: 14px; }
 .addr-custom { display: grid; gap: 6px; }
 .addr-dom { font-family: ui-monospace, Menlo, monospace; color: var(--muted); white-space: nowrap; align-self: center; }
+.picker-list li.titre { cursor: default; font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); padding: 6px 10px 8px; }
+.picker-list li.titre:hover { background: none; }
+.chip:empty { display: none; }
