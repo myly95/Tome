@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Série | Bibliothèque Tòme</title>
+<meta name="description" content="Une série de la Bibliothèque Tòme.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tome.css">
+</head>
+<body data-page="serie">
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="index.html" class="logo" aria-label="Tòme, accueil">
+      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true" width="30" height="30">
+        <rect x="4" y="5" width="7" height="23" rx="1.5" fill="currentColor"/>
+        <rect x="12.5" y="8" width="6" height="20" rx="1.5" fill="var(--accent)"/>
+        <rect x="20" y="4" width="8" height="24" rx="1.5" transform="rotate(8 24 16)" fill="var(--gold)"/>
+      </svg>
+      Tòme
+    </a>
+    <ul>
+      <li><a href="encyclopedie.html">Encyclopédie</a></li>
+      <li><a href="bibliotheque.html">Bibliothèque</a></li>
+      <li><a href="examens.html">Examens</a></li>
+      <li><a href="missions.html">Missions</a></li>
+      <li><a href="a-propos.html">À propos</a></li>
+      <li><a href="carrieres.html">Carrières</a></li>
+      <li class="menu-only"><a href="connexion.html">Se connecter</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="connexion.html" class="btn btn-ghost">Se connecter</a>
+      <a href="inscription.html" class="btn btn-primary">Commencer</a>
+      <button class="menu-toggle" aria-label="Ouvrir le menu" data-menu-toggle>
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="block tight">
+    <div class="wrap">
+      <nav class="crumbs" style="margin-bottom:22px;"><a href="bibliotheque.html">Bibliothèque</a></nav>
+      <div id="serie"><p class="chat-empty">Chargement…</p></div>
+    </div>
+  </section>
+<script src="js/bibliotheque-data.js"></script>
+<script src="js/bibliotheque.js" defer></script>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <a href="index.html" class="logo">
+          <svg viewBox="0 0 32 32" fill="none" aria-hidden="true" width="30" height="30">
+        <rect x="4" y="5" width="7" height="23" rx="1.5" fill="currentColor"/>
+        <rect x="12.5" y="8" width="6" height="20" rx="1.5" fill="var(--accent)"/>
+        <rect x="20" y="4" width="8" height="24" rx="1.5" transform="rotate(8 24 16)" fill="var(--gold)"/>
+      </svg>
+          Tòme
+        </a>
+        <p class="tag">Compagnie haïtienne pour l'intégration et le développement de l'éducation haïtienne.</p>
+      </div>
+      <div>
+        <h4>Plateforme</h4>
+        <ul>
+          <li><a href="encyclopedie.html">Encyclopédie</a></li>
+          <li><a href="bibliotheque.html">Bibliothèque</a></li>
+          <li><a href="examens.html">Examens</a></li>
+          <li><a href="missions.html">Missions</a></li>
+          <li><a href="index.html#profils">Pour qui</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Entreprise</h4>
+        <ul>
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="carrieres.html">Carrières</a></li>
+          <li><a href="mailto:contact@tome.ht">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Compte</h4>
+        <ul>
+          <li><a href="connexion.html">Se connecter</a></li>
+          <li><a href="inscription.html">Créer un compte</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© <span data-year>2026</span> Tòme. Tous droits réservés.</span>
+      <span>Milot, Haïti</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/tome.js"></script>
+</body>
+</html>

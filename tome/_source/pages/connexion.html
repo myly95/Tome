@@ -1,0 +1,64 @@
+@title: Se connecter | Tòme
+@desc: Connectez-vous à votre espace Tòme.
+@layout: auth
+<div class="auth">
+  <aside class="auth-side">
+    <a href="index.html" class="logo">{{LOGO}} Tòme</a>
+    <blockquote>« Chaque élève écrit son propre tòme. Reprenez là où vous vous êtes arrêté. »</blockquote>
+    <p class="small">Élèves, enseignants, écoles et partenaires : un seul accès, un espace adapté à chacun.</p>
+    <svg class="deco" viewBox="0 0 220 320" fill="none" aria-hidden="true">
+      <rect x="10" y="10" width="60" height="300" rx="6" fill="currentColor"/>
+      <rect x="80" y="40" width="50" height="270" rx="6" fill="currentColor"/>
+      <rect x="140" y="0" width="70" height="310" rx="6" fill="currentColor"/>
+    </svg>
+  </aside>
+
+  <div class="auth-main">
+    <div class="auth-box">
+      <a href="index.html" class="logo" style="margin-bottom:28px;">{{LOGO}} Tòme</a>
+      <h1>Bon retour.</h1>
+      <p>Connectez-vous pour retrouver votre espace.</p>
+
+      <form id="login-form" class="form-grid" novalidate>
+        <div class="alert err" id="login-error" role="alert"></div>
+        <div class="field">
+          <label for="email">Adresse e-mail ou adresse Tòme</label>
+          <input id="email" name="email" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" required placeholder="vous@exemple.com ou prenom.nom@tome">
+        </div>
+        <div class="field">
+          <label for="password" style="display:flex;justify-content:space-between;">Mot de passe <a href="mot-de-passe-oublie.html" style="color:var(--accent);font-weight:600;">Oublié ?</a></label>
+          <input id="password" name="password" type="password" autocomplete="current-password" required minlength="8" placeholder="Votre mot de passe">
+        </div>
+        <label class="check"><input type="checkbox" name="remember" checked> Rester connecté sur cet appareil</label>
+        <button type="submit" class="btn btn-primary btn-block">Se connecter</button>
+      </form>
+
+      <p class="alt">Pas encore de compte ? <a href="inscription.html">Créer un compte</a></p>
+    </div>
+  </div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('login-form');
+  const err = document.getElementById('login-error');
+  const show = msg => { err.textContent = msg; err.classList.add('show'); };
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    err.classList.remove('show');
+    const email = form.email.value.trim();
+    const password = form.password.value;
+    if (!email || /\s/.test(email)) return show('Entrez votre adresse e-mail ou votre adresse Tòme.');
+    if (password.length < 8) return show('Le mot de passe doit contenir au moins 8 caractères.');
+    const btn = form.querySelector('button[type=submit]');
+    btn.disabled = true; btn.textContent = 'Connexion…';
+    try {
+      const data = await TomeAuth.request(TOME_CONFIG.routes.login, { email, password });
+      TomeAuth.save(data.token, data.user);
+      location.href = TomeAuth.dashboardFor(data.user.role);
+    } catch (ex) {
+      show(ex.message || 'Connexion impossible. Réessayez.');
+      btn.disabled = false; btn.textContent = 'Se connecter';
+    }
+  });
+});
+</script>

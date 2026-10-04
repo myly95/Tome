@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Abaque | Atelier Tòme</title>
+<meta name="description" content="Abaque, le tableur de Tòme, avec les statistiques Mesure : formules, graphiques, tests, régression, qualité.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tome.css">
+</head>
+<body>
+<div class="app" data-role="">
+  <aside class="sidebar">
+    <a href="index.html" class="logo"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true" width="30" height="30">
+        <rect x="4" y="5" width="7" height="23" rx="1.5" fill="currentColor"/>
+        <rect x="12.5" y="8" width="6" height="20" rx="1.5" fill="var(--accent)"/>
+        <rect x="20" y="4" width="8" height="24" rx="1.5" transform="rotate(8 24 16)" fill="var(--gold)"/>
+      </svg> Tòme</a>
+    <nav>
+      <a href="mon-espace"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg>Mon espace</a><a href="messagerie.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Messagerie</a><div class="group">Atelier</div><a href="atelier.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6l-6 6 6 6M16 6l6 6-6 6"/></svg>Accueil de l'Atelier</a><a href="atelier-code.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6l-6 6 6 6M16 6l6 6-6 6"/></svg>Code</a><a href="abaque.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Abaque et Mesure</a><a href="plume.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>Plume</a><div class="group">Ressources</div><a href="encyclopedie.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2"/><path d="M19 19v3H6a2 2 0 0 1-2-2"/></svg>Encyclopédie</a>
+    </nav>
+    <div class="me">
+      <div class="avatar" data-user-initials>IN</div>
+      <div class="who"><strong data-user-name>Invité</strong><span data-user-role></span><span class="addr" data-user-address></span></div>
+      <button data-logout aria-label="Se déconnecter" title="Se déconnecter"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/></svg></button>
+    </div>
+  </aside>
+  <main class="main">
+    <div class="ab-top">
+      <button class="app-menu" data-app-menu aria-label="Menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <div class="ab-brand"><span class="eyebrow"><a href="atelier.html">Atelier</a> · Abaque</span><input id="wb-title" class="nb-title ab-title" aria-label="Nom du classeur" spellcheck="false"></div>
+      <button class="tbtn" id="session-toggle" title="Afficher les résultats Mesure"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Session Mesure <span id="session-count"></span></button>
+    </div>
+
+    <nav class="ab-menus" aria-label="Menus">
+      <div class="menu"><button>Fichier</button><div class="menu-pop">
+        <button data-action="nouveau">Nouveau classeur</button>
+        <button data-action="ouvrir">Ouvrir un fichier… <kbd>.abk .csv .xlsx .ods</kbd></button>
+        <button data-action="exemple">Charger un exemple</button>
+        <hr>
+        <button data-action="abk">Enregistrer (.abk) <kbd>Ctrl S</kbd></button>
+        <button data-action="xlsx">Exporter en Excel (.xlsx)</button>
+        <button data-action="ods">Exporter en LibreOffice (.ods)</button>
+        <button data-action="csv">Exporter la feuille en .csv</button>
+        <hr>
+        <button data-action="espace_save">Sauvegarder dans mon espace Tòme</button>
+        <button data-action="espace_open">Ouvrir depuis mon espace Tòme</button>
+      </div></div>
+      <div class="menu"><button>Édition</button><div class="menu-pop">
+        <button data-action="annuler">Annuler <kbd>Ctrl Z</kbd></button>
+        <button data-action="retablir">Rétablir <kbd>Ctrl Y</kbd></button>
+        <hr>
+        <button data-action="effacer">Effacer la sélection <kbd>Suppr</kbd></button>
+        <button data-action="bas">Recopier vers le bas <kbd>Ctrl D</kbd></button>
+        <button data-action="droite">Recopier vers la droite <kbd>Ctrl R</kbd></button>
+        <hr>
+        <button data-action="tri_asc">Trier par cette colonne (croissant)</button>
+        <button data-action="tri_desc">Trier par cette colonne (décroissant)</button>
+      </div></div>
+      <div class="menu"><button>Formules</button><div class="menu-pop">
+        <button data-action="fonctions">Insérer une fonction…</button>
+        <button data-action="aide">Comment écrire une formule</button>
+      </div></div>
+      <span class="ab-sep"></span>
+      <div class="menu mesure"><button>Statistiques</button><div class="menu-pop">
+        <button data-analyse="descriptives">Statistiques descriptives</button>
+        <button data-analyse="frequences">Tableau de fréquences</button>
+        <button data-analyse="correlation">Corrélation</button>
+        <button data-analyse="normalite">Test de normalité</button>
+        <button data-analyse="icmoy">Intervalle de confiance d'une moyenne</button>
+      </div></div>
+      <div class="menu mesure"><button>Tests</button><div class="menu-pop">
+        <button data-analyse="t1">Test t à 1 échantillon</button>
+        <button data-analyse="t2">Test t à 2 échantillons</button>
+        <button data-analyse="tp">Test t apparié</button>
+        <button data-analyse="f2">Test F de 2 variances</button>
+        <hr>
+        <button data-analyse="p1">Test de proportion (1 échantillon)</button>
+        <button data-analyse="p2">Test de proportion (2 échantillons)</button>
+        <button data-analyse="chi2">Khi-deux d'indépendance</button>
+        <hr>
+        <button data-analyse="anova">ANOVA à un facteur</button>
+        <button data-analyse="regression">Régression linéaire</button>
+      </div></div>
+      <div class="menu mesure"><button>Qualité</button><div class="menu-pop">
+        <button data-analyse="imr">Carte de contrôle I-MR</button>
+        <button data-analyse="xbarr">Carte de contrôle X̄-R</button>
+        <button data-analyse="pchart">Carte de contrôle P</button>
+        <button data-analyse="capa">Analyse de capabilité</button>
+        <button data-analyse="pareto">Diagramme de Pareto</button>
+      </div></div>
+      <div class="menu mesure"><button>Graphiques</button><div class="menu-pop">
+        <button data-analyse="g_hist">Histogramme</button>
+        <button data-analyse="g_box">Boîtes à moustaches</button>
+        <button data-analyse="g_nuage">Nuage de points</button>
+        <button data-analyse="g_serie">Série chronologique</button>
+        <button data-analyse="g_barres">Diagramme en barres</button>
+        <button data-analyse="g_secteurs">Diagramme circulaire</button>
+      </div></div>
+    </nav>
+
+    <div class="ab-tools" role="toolbar" aria-label="Mise en forme">
+      <button class="tbtn icon" id="fmt-b" title="Gras (Ctrl B)"><b>G</b></button>
+      <button class="tbtn icon" id="fmt-i" title="Italique (Ctrl I)"><i>I</i></button>
+      <button class="tbtn icon" id="fmt-pct" title="Pourcentage">%</button>
+      <button class="tbtn icon" id="fmt-dec-moins" title="Moins de décimales">,0</button>
+      <button class="tbtn icon" id="fmt-dec-plus" title="Plus de décimales">,00</button>
+      <button class="tbtn icon" data-align="left" title="Aligner à gauche">⇤</button>
+      <button class="tbtn icon" data-align="center" title="Centrer">↔</button>
+      <button class="tbtn icon" data-align="right" title="Aligner à droite">⇥</button>
+      <label class="tbtn icon color" title="Couleur de fond"><input type="color" id="fmt-bg" value="#fff3c4"><span>▣</span></label>
+      <button class="tbtn" id="fmt-clear" title="Effacer la mise en forme">Effacer le format</button>
+    </div>
+
+    <div class="ab-fx">
+      <input id="namebox" class="namebox" aria-label="Cellule" spellcheck="false">
+      <span class="fx-label">fx</span>
+      <input id="fx" class="fx" aria-label="Contenu ou formule" spellcheck="false" autocomplete="off" placeholder="Valeur ou formule (=SOMME(A2:A10))">
+    </div>
+
+    <div class="ab-main">
+      <div class="grid-wrap" id="grid-wrap" tabindex="0" aria-label="Feuille de calcul">
+        <div class="grid-layer" id="grid-layer">
+          <table class="grid" id="grid"></table>
+          <div class="fill-handle" id="fill-handle" title="Faites glisser pour recopier" hidden></div>
+        </div>
+      </div>
+
+      <aside class="session" id="session" aria-label="Session Mesure">
+        <header class="session-head">
+          <h2><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg> Session Mesure</h2>
+          <div>
+            <button class="tbtn" id="session-print" title="Imprimer ou enregistrer en PDF">PDF</button>
+            <button class="tbtn" id="session-clear">Effacer</button>
+            <button class="tbtn icon" id="session-close" aria-label="Fermer">×</button>
+          </div>
+        </header>
+        <div class="session-body" id="session-body"></div>
+      </aside>
+    </div>
+
+    <div class="ab-bottom">
+      <div class="tabs-row"><div id="tabs" class="sheet-tabs"></div><button class="tbtn icon" id="add-sheet" title="Ajouter une feuille">+</button><button class="tbtn icon" id="del-sheet" title="Supprimer la feuille">−</button></div>
+      <div class="ab-status"><span id="status"></span><button class="tbtn" id="add-rows">+ 100 lignes</button><button class="tbtn" id="add-cols">+ 5 colonnes</button></div>
+    </div>
+
+    <input type="file" id="open-file" accept=".abk,.csv,.tsv,.txt,.xlsx,.xls,.ods" hidden>
+
+    <dialog class="dlg" id="dlg-analyse" aria-labelledby="dlg-analyse-t">
+      <form method="dialog">
+        <div class="dlg-head"><h2 id="dlg-analyse-t">Analyse</h2><button type="button" data-close aria-label="Fermer">×</button></div>
+        <div class="dlg-body">
+          <div class="form-grid" id="analyse-form"></div>
+          <p class="small" id="analyse-help"></p>
+          <div style="display:flex;gap:8px;justify-content:flex-end;"><button type="button" class="tbtn" data-close>Annuler</button><button class="tbtn primary" id="analyse-ok">Calculer</button></div>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="dlg" id="dlg-fn" aria-labelledby="dlg-fn-t">
+      <div class="dlg-head"><h2 id="dlg-fn-t">Insérer une fonction</h2><button data-close aria-label="Fermer">×</button></div>
+      <div class="dlg-body">
+        <div class="install-row"><input id="fn-search" placeholder="Rechercher (ex. moyenne, SI, RECHERCHEV)"></div>
+        <div class="fn-list" id="fn-list"></div>
+      </div>
+    </dialog>
+
+    <dialog class="dlg" id="dlg-espace" aria-labelledby="dlg-espace-t">
+      <div class="dlg-head"><h2 id="dlg-espace-t">Ouvrir depuis mon espace</h2><button data-close aria-label="Fermer">×</button></div>
+      <div class="dlg-body"><div class="nb-list" id="espace-list"></div></div>
+    </dialog>
+
+    <dialog class="dlg" id="dlg-aide" aria-labelledby="dlg-aide-t">
+      <div class="dlg-head"><h2 id="dlg-aide-t">Écrire une formule</h2><button data-close aria-label="Fermer">×</button></div>
+      <div class="dlg-body prose-small">
+        <p>Une formule commence toujours par <code>=</code>. Exemples :</p>
+        <ul>
+          <li><code>=A2+B2</code> additionne deux cellules.</li>
+          <li><code>=SOMME(C2:C30)</code> additionne une plage. On peut aussi écrire les noms anglais : <code>=SUM(C2:C30)</code>.</li>
+          <li><code>=MOYENNE(C2:C30)</code>, <code>=MAX(...)</code>, <code>=ECARTYPE(...)</code>, <code>=NB.SI(C2:C30;"&gt;=10")</code></li>
+          <li><code>=SI(C2&gt;=10;"Admis";"Ajourné")</code></li>
+        </ul>
+        <p>Séparez les arguments par <code>;</code> (ou <code>,</code>). Dans une formule, les nombres décimaux s'écrivent avec un point : <code>=A2*1.5</code>. Dans une cellule simple, la virgule fonctionne : <code>12,5</code>.</p>
+        <p>Le signe <code>$</code> bloque une référence lors de la recopie : <code>=$B$1*A2</code>. Pour recopier une formule, tirez le petit carré en bas à droite de la sélection, ou utilisez Ctrl D.</p>
+        <p>Pendant la saisie d'une formule, cliquez sur une cellule pour insérer sa référence.</p>
+        <p><strong>Pour les statistiques Mesure</strong> : écrivez le nom de chaque variable en ligne 1 et les données en dessous, une colonne par variable.</p>
+      </div>
+    </dialog>
+
+<script src="https://cdn.jsdelivr.net/npm/@formulajs/formulajs@4.6.1/lib/browser/formula.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js" defer></script>
+<script src="js/abaque-moteur.js"></script>
+<script src="js/mesure-stats.js"></script>
+<script src="js/mesure-graphiques.js"></script>
+<script src="js/abaque.js" defer></script>
+
+  </main>
+</div>
+
+<script src="js/tome.js"></script>
+</body>
+</html>

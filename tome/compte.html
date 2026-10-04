@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mon compte | Tòme</title>
+<meta name="description" content="Votre compte Tòme : mot de passe, code de secours.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tome.css">
+</head>
+<body>
+<div class="app" data-role="">
+  <aside class="sidebar">
+    <a href="index.html" class="logo"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true" width="30" height="30">
+        <rect x="4" y="5" width="7" height="23" rx="1.5" fill="currentColor"/>
+        <rect x="12.5" y="8" width="6" height="20" rx="1.5" fill="var(--accent)"/>
+        <rect x="20" y="4" width="8" height="24" rx="1.5" transform="rotate(8 24 16)" fill="var(--gold)"/>
+      </svg> Tòme</a>
+    <nav>
+      <a href="mon-espace"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg>Mon espace</a><a href="messagerie.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Messagerie</a><a href="compte.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>Paramètres</a>
+    </nav>
+    <div class="me">
+      <div class="avatar" data-user-initials>IN</div>
+      <div class="who"><strong data-user-name>Invité</strong><span data-user-role></span><span class="addr" data-user-address></span></div>
+      <button data-logout aria-label="Se déconnecter" title="Se déconnecter"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/></svg></button>
+    </div>
+  </aside>
+  <main class="main">
+    <div class="topbar">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <button class="app-menu" data-app-menu aria-label="Menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+        <div><span class="eyebrow">Paramètres</span><h1>Mon compte</h1><p>Votre adresse Tòme, votre mot de passe et votre code de secours.</p></div>
+      </div>
+    </div>
+    <div id="c-msg"></div>
+    <div class="panels">
+      <div class="stack">
+        <div class="panel">
+          <div class="panel-head"><h2>Changer mon mot de passe</h2></div>
+          <form class="form-grid" id="f-pw">
+            <div class="field"><label for="pw-old">Mot de passe actuel</label><input id="pw-old" type="password" autocomplete="current-password" required></div>
+            <div class="form-row"><div class="field"><label for="pw-new">Nouveau mot de passe</label><input id="pw-new" type="password" autocomplete="new-password" minlength="8" required></div><div class="field"><label for="pw-new2">Confirmation</label><input id="pw-new2" type="password" autocomplete="new-password" minlength="8" required></div></div>
+            <div><button class="btn btn-primary" type="submit">Changer le mot de passe</button></div>
+            <p class="small">Vos autres appareils seront déconnectés.</p>
+          </form>
+        </div>
+        <div class="panel" id="p-aide" hidden>
+          <div class="panel-head"><h2>Aider quelqu'un à retrouver son compte</h2></div>
+          <p class="small" style="margin-bottom:12px;" id="aide-texte"></p>
+          <div class="install-row"><input id="aide-id" placeholder="Adresse Tòme ou e-mail de la personne" autocapitalize="none"><button class="tbtn primary" id="aide-go">Créer un code</button></div>
+          <div id="aide-res" style="margin-top:14px;"></div>
+        </div>
+      </div>
+      <div class="stack">
+        <div class="panel">
+          <div class="panel-head"><h2>Mon identité</h2></div>
+          <div class="nb-list" id="c-info"></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2>Code de secours</h2><span class="chip" id="cs-etat"></span></div>
+          <p class="small" style="margin-bottom:12px;">Il permet de choisir un nouveau mot de passe si vous l'oubliez, sans e-mail. Gardez-le dans un cahier ou en photo. Un nouveau code remplace l'ancien.</p>
+          <div class="install-row"><input id="cs-pw" type="password" placeholder="Votre mot de passe" autocomplete="current-password"><button class="tbtn primary" id="cs-go">Nouveau code</button></div>
+          <div id="cs-res" style="margin-top:14px;"></div>
+        </div>
+      </div>
+    </div>
+<script src="js/compte.js" defer></script>
+
+  </main>
+</div>
+
+<script src="js/tome.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+@title: Feuillets du bac | Tòme
+@desc: Feuillets du baccalauréat haïtien par matière, à 100 HTG, pour réviser efficacement.
+@layout: app
+@role:
+@sidebar: [("mon-espace","home","Mon espace"),("feuillets.html","check","Feuillets du bac"),("tome-ia.html","chat","Tòme IA"),("messagerie.html","mail","Messagerie"),("group","Apprendre"),("examens.html","check","Entraînements"),("encyclopedie.html","book","Encyclopédie")]
+    <div class="topbar">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <button class="app-menu" data-app-menu aria-label="Menu">{{icon:menu:20}}</button>
+        <div><span class="eyebrow">Réviser le bac</span><h1>Feuillets du bac</h1><p>Des feuillets par matière pour préparer le baccalauréat. Une fois acheté, un feuillet reste disponible dans votre compte.</p></div>
+      </div>
+    </div>
+    <div class="panels">
+      <div id="shop"><p class="chat-empty">Chargement…</p></div>
+      <div class="stack"><div class="panel"><div class="panel-head"><h2>Mes achats</h2></div><div class="nb-list" id="mine"></div></div></div>
+    </div>
+
+    <section id="shop-admin" hidden style="margin-top:40px;">
+      <div class="panel-head"><h2 class="serif" style="font-size:26px;">Gestion de la boutique</h2><span class="chip ok" id="adm-total"></span></div>
+      <div class="panels" style="margin-top:12px;">
+        <div class="panel">
+          <h3 class="serif" style="font-size:19px;margin-bottom:12px;">Produit</h3>
+          <div class="form-grid">
+            <div class="form-row"><div class="field"><label for="p-id">Identifiant</label><input id="p-id" placeholder="maths-ns4-2025"></div><div class="field"><label for="p-prix">Prix (HTG)</label><input id="p-prix" type="number" value="100" min="0"></div></div>
+            <div class="form-row"><div class="field"><label for="p-matiere">Matière</label><input id="p-matiere" placeholder="Mathématiques"></div><div class="field"><label for="p-titre">Titre</label><input id="p-titre" placeholder="Sujets et corrigés 2025"></div></div>
+            <div class="form-row"><div class="field"><label for="p-niveau">Niveau</label><input id="p-niveau" placeholder="NS4"></div><div class="field"><label for="p-annee">Année</label><input id="p-annee" placeholder="2025"></div></div>
+            <div class="field"><label for="p-description">Description</label><textarea id="p-description" rows="3"></textarea></div>
+            <div class="field"><label for="p-pdf">Ajouter des feuillets (PDF)</label><input id="p-pdf" type="file" accept="application/pdf" multiple><div id="p-files" style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;"></div></div>
+            <label class="check"><input type="checkbox" id="p-publie" checked> Visible dans la boutique</label>
+            <button class="btn btn-primary" id="p-save">Enregistrer le produit</button>
+          </div>
+        </div>
+        <div class="stack">
+          <div class="panel"><div class="panel-head"><h2>Paiements à vérifier</h2></div><div class="nb-list" id="adm-pending"></div></div>
+          <div class="panel"><div class="panel-head"><h2>Produits</h2></div><div class="nb-list" id="adm-products"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <dialog class="dlg" id="dlg-buy" aria-labelledby="buy-title">
+      <div class="dlg-head"><h2 id="buy-title">Acheter</h2><button data-close aria-label="Fermer">×</button></div>
+      <div class="dlg-body">
+        <p>Prix : <strong id="buy-price"></strong></p>
+        <div id="buy-moncash" class="card" style="padding:16px 18px;display:grid;gap:10px;">
+          <h3 style="font-size:17px;">Payer avec MonCash</h3>
+          <p class="small">Vous serez redirigé vers MonCash pour payer, puis renvoyé ici. Le feuillet est débloqué dès que MonCash confirme le paiement.</p>
+          <button class="btn btn-primary" id="btn-moncash">Payer avec MonCash</button>
+        </div>
+        <div id="buy-manual" class="card" style="padding:16px 18px;display:grid;gap:10px;">
+          <h3 style="font-size:17px;">Paiement manuel</h3>
+          <p class="small" id="buy-manual-text"></p>
+          <div class="install-row"><input id="buy-ref" placeholder="Numéro de transaction"><button class="tbtn primary" id="btn-manual">Envoyer</button></div>
+          <p class="small">L'équipe Tòme vérifie le paiement et débloque le feuillet. Vous serez prévenu dans votre messagerie.</p>
+        </div>
+        <p class="small" id="buy-none" hidden>Le paiement n'est pas encore disponible. Revenez bientôt.</p>
+      </div>
+    </dialog>
+<script src="js/feuillets.js" defer></script>

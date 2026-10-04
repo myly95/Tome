@@ -1,0 +1,41 @@
+@title: Tòme IA | Tòme
+@desc: Tòme IA, l'assistant de la plateforme : leçons, révisions, aide à l'utilisation de Tòme.
+@layout: app
+@role:
+@sidebar: [("mon-espace","home","Mon espace"),("tome-ia.html","chat","Tòme IA"),("messagerie.html","mail","Messagerie"),("group","Apprendre"),("encyclopedie.html","book","Encyclopédie"),("bibliotheque.html","book","Bibliothèque"),("atelier.html","code","Atelier")]
+    <div class="topbar" style="margin-bottom:16px;">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <button class="app-menu" data-app-menu aria-label="Menu">{{icon:menu:20}}</button>
+        <div><h1>Tòme IA</h1><p>Posez vos questions de cours, révisez, ou demandez de l'aide pour utiliser Tòme.</p></div>
+      </div>
+      <div class="right"><button class="tbtn" id="ia-new">Nouvelle discussion</button></div>
+    </div>
+    <div class="ia">
+      <div class="ia-thread" id="ia-thread"></div>
+      <form class="composer ia-composer" id="ia-form">
+        <textarea id="ia-input" rows="1" placeholder="Votre question…" aria-label="Votre question" maxlength="4000"></textarea>
+        <button class="btn btn-primary" id="ia-send">Envoyer</button>
+      </form>
+      <p class="ia-note">Tòme IA peut se tromper. Vérifiez les informations importantes avec votre enseignant ou dans l'Encyclopédie.</p>
+    </div>
+
+    <section id="ia-admin" hidden class="ia-admin">
+      <div class="panel-head" style="margin-top:36px;"><h2 class="serif" style="font-size:26px;">Connaissances de l'agent</h2><span class="small" id="kb-meta"></span></div>
+      <p class="small" style="margin-bottom:14px;">L'agent consulte ces fiches avant chaque réponse. Une fiche par sujet, en texte simple ; les titres commencent par #. Réservé à l'équipe Tòme.</p>
+      <div class="panels">
+        <div class="panel">
+          <div class="field"><label for="kb-name">Nom de la fiche</label><input id="kb-name" placeholder="revolution-haitienne"></div>
+          <div class="field" style="margin-top:12px;"><label for="kb-text">Contenu</label><textarea id="kb-text" rows="16" class="kb-text"></textarea></div>
+          <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;"><button class="tbtn primary" id="kb-save">Enregistrer la fiche</button><button class="tbtn" id="kb-new">Nouvelle fiche</button><button class="tbtn" id="kb-del">Supprimer</button></div>
+          <details style="margin-top:18px;"><summary style="cursor:pointer;font-weight:600;">Instructions générales de l'agent</summary>
+            <textarea id="kb-instr" rows="12" class="kb-text" style="margin-top:10px;"></textarea>
+            <button class="tbtn" id="kb-instr-save" style="margin-top:8px;">Enregistrer les instructions</button>
+          </details>
+        </div>
+        <div class="stack">
+          <div class="panel"><div class="panel-head"><h2>Fiches</h2></div><div class="nb-list" id="kb-list"></div></div>
+          <div class="panel"><div class="panel-head"><h2>Ce que demandent les élèves</h2></div><div id="kb-journal" class="nb-list"></div></div>
+        </div>
+      </div>
+    </section>
+<script src="js/tome-ia.js" defer></script>

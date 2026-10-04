@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Modération | Bibliothèque Tòme</title>
+<meta name="description" content="Relecture des chapitres proposés par les élèves.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tome.css">
+</head>
+<body data-page="moderation">
+<div class="app" data-role="">
+  <aside class="sidebar">
+    <a href="index.html" class="logo"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true" width="30" height="30">
+        <rect x="4" y="5" width="7" height="23" rx="1.5" fill="currentColor"/>
+        <rect x="12.5" y="8" width="6" height="20" rx="1.5" fill="var(--accent)"/>
+        <rect x="20" y="4" width="8" height="24" rx="1.5" transform="rotate(8 24 16)" fill="var(--gold)"/>
+      </svg> Tòme</a>
+    <nav>
+      <a href="mon-espace"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg>Mon espace</a><a href="messagerie.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Messagerie</a><div class="group">Bibliothèque</div><a href="bibliotheque.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2"/><path d="M19 19v3H6a2 2 0 0 1-2-2"/></svg>Lire</a><a href="publier.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>Publier</a><a href="moderation.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg>Modération</a>
+    </nav>
+    <div class="me">
+      <div class="avatar" data-user-initials>IN</div>
+      <div class="who"><strong data-user-name>Invité</strong><span data-user-role></span><span class="addr" data-user-address></span></div>
+      <button data-logout aria-label="Se déconnecter" title="Se déconnecter"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/></svg></button>
+    </div>
+  </aside>
+  <main class="main">
+    <div class="topbar">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <button class="app-menu" data-app-menu aria-label="Menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+        <div><span class="eyebrow">Bibliothèque</span><h1>Modération <span id="mod-count"></span></h1><p>Relisez les chapitres proposés, puis acceptez-les ou expliquez à l'élève ce qu'il faut corriger.</p></div>
+      </div>
+    </div>
+    <div class="chat mod">
+      <section class="chat-side"><div class="conv-list" id="mod-list"><p class="chat-empty">Chargement…</p></div></section>
+      <section class="chat-main mod-view" id="mod-view"><p class="chat-empty">Choisissez un chapitre à relire.</p></section>
+    </div>
+    <div class="panel" style="margin-top:16px;"><div class="panel-head"><h2>Décisions récentes</h2></div><div class="nb-list" id="mod-recent"></div></div>
+    <div class="panel" style="margin-top:16px;">
+      <div class="panel-head"><h2>Annoncer une nouveauté</h2></div>
+      <p class="small" style="margin-bottom:12px;">Pour une nouvelle série ou un nouveau conte de Tòme (ajoutés dans le dossier bibliotheque) : tout le monde le verra dans « Nouveautés Tòme », dans sa messagerie. Les chapitres d'élèves acceptés ci-dessus sont annoncés automatiquement.</p>
+      <div class="form-grid">
+        <div class="form-row"><div class="field"><label for="an-titre">Titre</label><input id="an-titre" maxlength="140" placeholder="Nouvelle histoire : Le tambour de Ti Jan"></div><div class="field"><label for="an-lien">Lien (facultatif)</label><input id="an-lien" placeholder="serie.html?s=le-tambour-de-ti-jan"></div></div>
+        <div class="field"><label for="an-texte">Message</label><textarea id="an-texte" rows="3" maxlength="1500"></textarea></div>
+        <div><button class="btn btn-primary" id="an-send">Envoyer l'annonce à tous</button></div>
+      </div>
+    </div>
+<script src="js/bibliotheque.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const b = document.getElementById('an-send');
+  b.addEventListener('click', async () => {
+    const titre = document.getElementById('an-titre').value.trim();
+    if (!titre) return alert('Indiquez un titre.');
+    if (!confirm('Envoyer cette annonce à tous les utilisateurs ?')) return;
+    b.disabled = true;
+    try {
+      await TomeAuth.api('/api/annonces', { method: 'POST', body: { titre, texte: document.getElementById('an-texte').value, lien: document.getElementById('an-lien').value.trim() } });
+      ['an-titre', 'an-texte', 'an-lien'].forEach(id => { document.getElementById(id).value = ''; });
+      b.textContent = 'Annonce envoyée ✓'; setTimeout(() => { b.textContent = 'Envoyer l\'annonce à tous'; }, 3000);
+    } catch (e) { alert(e.message); }
+    finally { b.disabled = false; }
+  });
+});
+</script>
+
+  </main>
+</div>
+
+<script src="js/tome.js"></script>
+</body>
+</html>

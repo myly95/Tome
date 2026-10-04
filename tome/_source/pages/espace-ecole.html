@@ -1,0 +1,55 @@
+@title: Espace école | Tòme
+@desc: Espace établissement Tòme.
+@layout: app
+@role: ecole
+@sidebar: [('espace-ecole.html', 'home', 'Accueil'), ('gestion-ecole.html', 'users', 'Élèves et bulletins'), ('#admissions', 'check', 'Admissions'), ('#resultats', 'chart', 'Résultats'), ('#equipe', 'users', 'Équipe'), ('tome-ia.html', 'chat', 'Tòme IA'), ('messagerie.html', 'mail', 'Messagerie'), ('group', 'Établissement'), ('compte.html', 'cog', 'Paramètres')]
+    <div class="topbar">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <button class="app-menu" data-app-menu aria-label="Menu">{{icon:menu:20}}</button>
+        <div>
+          <h1>Tableau de bord de l'établissement</h1>
+          <p>Admissions, résultats et équipe pédagogique.</p>
+        </div>
+      </div>
+      <div class="right">
+        <span class="demo-note" hidden>Données de démonstration</span>
+        <a href="#" class="btn btn-primary">{{icon:plus:16}} Nouveau concours</a>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="k">Élèves inscrits</div><div class="v">412</div><div class="d">sur la plateforme</div></div>
+      <div class="stat"><div class="k">Candidats au concours</div><div class="v">128</div><div class="d">Session d'octobre</div></div>
+      <div class="stat"><div class="k">Taux de réussite</div><div class="v">62 %</div><div class="d up">+4 points vs 2025</div></div>
+      <div class="stat"><div class="k">Enseignants actifs</div><div class="v">19</div><div class="d up">3 nouveaux</div></div>
+    </div>
+    <div class="panels">
+      <div class="stack">
+        <div class="panel" id="admissions">
+          <div class="panel-head"><h2>Concours d'admission</h2><a href="#">Exporter</a></div>
+          <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Candidat·e</th><th>Classe visée</th><th>Score</th><th>Statut</th></tr></thead><tbody><tr><td><strong>Wilda J.</strong></td><td>7e AF</td><td>86 / 100</td><td><span class="chip ok">Admis·e</span></td></tr><tr><td><strong>Ricardo P.</strong></td><td>7e AF</td><td>79 / 100</td><td><span class="chip ok">Admis·e</span></td></tr><tr><td><strong>Nathalie D.</strong></td><td>NS1</td><td>71 / 100</td><td><span class="chip gold">Liste d'attente</span></td></tr><tr><td><strong>Jean-Marc A.</strong></td><td>7e AF</td><td>64 / 100</td><td><span class="chip gold">Liste d'attente</span></td></tr><tr><td><strong>Stéphanie L.</strong></td><td>NS1</td><td>En cours</td><td><span class="chip ">Épreuve en cours</span></td></tr></tbody></table></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2>Candidatures par semaine</h2><span style="color:var(--muted);font-size:14px;">Session d'octobre</span></div>
+          <div class="chart"><div class="col"><i class="" style="height:35%"></i><span>S1</span></div><div class="col"><i class="" style="height:56%"></i><span>S2</span></div><div class="col"><i class="" style="height:79%"></i><span>S3</span></div><div class="col"><i class="hl" style="height:100%"></i><span>S4</span></div><div class="col"><i class="" style="height:65%"></i><span>S5</span></div><div class="col"><i class="" style="height:41%"></i><span>S6</span></div></div>
+        </div>
+      </div>
+      <div class="stack">
+        <div class="panel" id="resultats">
+          <div class="panel-head"><h2>Résultats par matière</h2></div>
+          <div class="list">
+            <div class="row"><div class="grow"><div class="t">Mathématiques</div><div class="s" style="margin-bottom:8px;">Moyenne des candidats</div><div class="bar "><i style="width:64%"></i></div></div><span class="s" style="min-width:40px;text-align:right;">64%</span></div>
+            <div class="row"><div class="grow"><div class="t">Français</div><div class="s" style="margin-bottom:8px;">Moyenne des candidats</div><div class="bar gold"><i style="width:71%"></i></div></div><span class="s" style="min-width:40px;text-align:right;">71%</span></div>
+            <div class="row"><div class="grow"><div class="t">Sciences</div><div class="s" style="margin-bottom:8px;">Moyenne des candidats</div><div class="bar ink"><i style="width:58%"></i></div></div><span class="s" style="min-width:40px;text-align:right;">58%</span></div>
+            <div class="row"><div class="grow"><div class="t">Culture générale</div><div class="s" style="margin-bottom:8px;">Moyenne des candidats</div><div class="bar "><i style="width:69%"></i></div></div><span class="s" style="min-width:40px;text-align:right;">69%</span></div>
+          </div>
+        </div>
+        <div class="panel" id="equipe">
+          <div class="panel-head"><h2>Équipe pédagogique</h2><a href="#">Inviter</a></div>
+          <div class="list">
+            <div class="row"><div class="ico">{{icon:users}}</div><div class="grow"><div class="t">Département de sciences</div><div class="s">6 enseignants</div></div></div>
+            <div class="row"><div class="ico">{{icon:users}}</div><div class="grow"><div class="t">Département de lettres</div><div class="s">8 enseignants</div></div></div>
+            <div class="row"><div class="ico">{{icon:users}}</div><div class="grow"><div class="t">Mathématiques</div><div class="s">5 enseignants</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>

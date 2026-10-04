@@ -1,0 +1,54 @@
+@title: Espace enseignant | Tòme
+@desc: Espace enseignant Tòme.
+@layout: app
+@role: enseignant
+@sidebar: [('espace-enseignant.html', 'home', 'Accueil'), ('#classes', 'users', 'Mes classes'), ('#evaluations', 'check', 'Évaluations'), ('#contenus', 'pen', 'Mes contenus'), ('atelier.html', 'code', 'Atelier'), ('tome-ia.html', 'chat', 'Tòme IA'), ('messagerie.html', 'mail', 'Messagerie'), ('group', 'Compte'), ('compte.html', 'cog', 'Paramètres')]
+    <div class="topbar">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <button class="app-menu" data-app-menu aria-label="Menu">{{icon:menu:20}}</button>
+        <div>
+          <h1>Bonjour, <span data-user-first>Invité</span>.</h1>
+          <p>Vos classes, vos évaluations et vos contenus.</p>
+        </div>
+      </div>
+      <div class="right">
+        <span class="demo-note" hidden>Données de démonstration</span>
+        <a href="#" class="btn btn-primary">{{icon:plus:16}} Nouvelle évaluation</a>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="k">Élèves suivis</div><div class="v">146</div><div class="d">4 classes</div></div>
+      <div class="stat"><div class="k">Moyenne générale</div><div class="v">71 %</div><div class="d up">+3 points ce mois</div></div>
+      <div class="stat"><div class="k">Copies à corriger</div><div class="v">18</div><div class="d">2 évaluations</div></div>
+      <div class="stat"><div class="k">Articles publiés</div><div class="v">7</div><div class="d up">412 lectures</div></div>
+    </div>
+    <div class="panels">
+      <div class="stack">
+        <div class="panel" id="classes">
+          <div class="panel-head"><h2>Mes classes</h2><a href="#">Gérer</a></div>
+          <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Classe</th><th>Élèves</th><th>Moyenne</th><th></th></tr></thead><tbody><tr><td><strong>NS2 A</strong></td><td>38</td><td><div style="display:flex;align-items:center;gap:10px;"><div class="bar" style="flex:1;min-width:80px;"><i style="width:74%"></i></div>74 %</div></td><td><a href="#" style="color:var(--accent);font-weight:600;">Ouvrir</a></td></tr><tr><td><strong>NS2 B</strong></td><td>35</td><td><div style="display:flex;align-items:center;gap:10px;"><div class="bar" style="flex:1;min-width:80px;"><i style="width:68%"></i></div>68 %</div></td><td><a href="#" style="color:var(--accent);font-weight:600;">Ouvrir</a></td></tr><tr><td><strong>NS3</strong></td><td>31</td><td><div style="display:flex;align-items:center;gap:10px;"><div class="bar" style="flex:1;min-width:80px;"><i style="width:81%"></i></div>81 %</div></td><td><a href="#" style="color:var(--accent);font-weight:600;">Ouvrir</a></td></tr><tr><td><strong>9e AF</strong></td><td>42</td><td><div style="display:flex;align-items:center;gap:10px;"><div class="bar" style="flex:1;min-width:80px;"><i style="width:63%"></i></div>63 %</div></td><td><a href="#" style="color:var(--accent);font-weight:600;">Ouvrir</a></td></tr></tbody></table></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2>Réussite par chapitre</h2><span style="color:var(--muted);font-size:14px;">NS2 A</span></div>
+          <div class="chart"><div class="col"><i class="" style="height:100%"></i><span>Ch. 1</span></div><div class="col"><i class="" style="height:90%"></i><span>Ch. 2</span></div><div class="col"><i class="hl" style="height:71%"></i><span>Ch. 3</span></div><div class="col"><i class="" style="height:84%"></i><span>Ch. 4</span></div><div class="col"><i class="" style="height:94%"></i><span>Ch. 5</span></div><div class="col"><i class="" style="height:78%"></i><span>Ch. 6</span></div></div>
+        </div>
+      </div>
+      <div class="stack">
+        <div class="panel" id="evaluations">
+          <div class="panel-head"><h2>Évaluations</h2><a href="#">Toutes</a></div>
+          <div class="list">
+            <div class="row"><div class="ico">{{icon:check}}</div><div class="grow"><div class="t">Contrôle : fonctions affines</div><div class="s">NS2 A · 12 copies</div></div><span class="chip gold">À corriger</span></div>
+            <div class="row"><div class="ico">{{icon:check}}</div><div class="grow"><div class="t">Devoir : statistiques</div><div class="s">NS3 · 6 copies</div></div><span class="chip gold">À corriger</span></div>
+            <div class="row"><div class="ico">{{icon:cal}}</div><div class="grow"><div class="t">Examen blanc</div><div class="s">9e AF · lundi</div></div><span class="chip">Programmé</span></div>
+          </div>
+        </div>
+        <div class="panel" id="contenus">
+          <div class="panel-head"><h2>Mes contenus</h2><a href="#">Écrire</a></div>
+          <div class="list">
+            <div class="row"><div class="ico">{{icon:book}}</div><div class="grow"><div class="t">Statistique descriptive</div><div class="s">Publié · 214 lectures</div></div><span class="chip ok">En ligne</span></div>
+            <div class="row"><div class="ico">{{icon:pen}}</div><div class="grow"><div class="t">Les suites numériques</div><div class="s">Brouillon</div></div><span class="chip">Brouillon</span></div>
+            <div class="row"><div class="ico">{{icon:book}}</div><div class="grow"><div class="t">Équations du second degré</div><div class="s">En relecture</div></div><span class="chip gold">Relecture</span></div>
+          </div>
+        </div>
+      </div>
+    </div>

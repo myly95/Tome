@@ -1,0 +1,44 @@
+@title: Modération | Bibliothèque Tòme
+@desc: Relecture des chapitres proposés par les élèves.
+@layout: app
+@role: 
+@page: moderation
+@sidebar: [("mon-espace","home","Mon espace"),("messagerie.html","mail","Messagerie"),("group","Bibliothèque"),("bibliotheque.html","book","Lire"),("publier.html","pen","Publier"),("moderation.html","check","Modération")]
+    <div class="topbar">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <button class="app-menu" data-app-menu aria-label="Menu">{{icon:menu:20}}</button>
+        <div><span class="eyebrow">Bibliothèque</span><h1>Modération <span id="mod-count"></span></h1><p>Relisez les chapitres proposés, puis acceptez-les ou expliquez à l'élève ce qu'il faut corriger.</p></div>
+      </div>
+    </div>
+    <div class="chat mod">
+      <section class="chat-side"><div class="conv-list" id="mod-list"><p class="chat-empty">Chargement…</p></div></section>
+      <section class="chat-main mod-view" id="mod-view"><p class="chat-empty">Choisissez un chapitre à relire.</p></section>
+    </div>
+    <div class="panel" style="margin-top:16px;"><div class="panel-head"><h2>Décisions récentes</h2></div><div class="nb-list" id="mod-recent"></div></div>
+    <div class="panel" style="margin-top:16px;">
+      <div class="panel-head"><h2>Annoncer une nouveauté</h2></div>
+      <p class="small" style="margin-bottom:12px;">Pour une nouvelle série ou un nouveau conte de Tòme (ajoutés dans le dossier bibliotheque) : tout le monde le verra dans « Nouveautés Tòme », dans sa messagerie. Les chapitres d'élèves acceptés ci-dessus sont annoncés automatiquement.</p>
+      <div class="form-grid">
+        <div class="form-row"><div class="field"><label for="an-titre">Titre</label><input id="an-titre" maxlength="140" placeholder="Nouvelle histoire : Le tambour de Ti Jan"></div><div class="field"><label for="an-lien">Lien (facultatif)</label><input id="an-lien" placeholder="serie.html?s=le-tambour-de-ti-jan"></div></div>
+        <div class="field"><label for="an-texte">Message</label><textarea id="an-texte" rows="3" maxlength="1500"></textarea></div>
+        <div><button class="btn btn-primary" id="an-send">Envoyer l'annonce à tous</button></div>
+      </div>
+    </div>
+<script src="js/bibliotheque.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const b = document.getElementById('an-send');
+  b.addEventListener('click', async () => {
+    const titre = document.getElementById('an-titre').value.trim();
+    if (!titre) return alert('Indiquez un titre.');
+    if (!confirm('Envoyer cette annonce à tous les utilisateurs ?')) return;
+    b.disabled = true;
+    try {
+      await TomeAuth.api('/api/annonces', { method: 'POST', body: { titre, texte: document.getElementById('an-texte').value, lien: document.getElementById('an-lien').value.trim() } });
+      ['an-titre', 'an-texte', 'an-lien'].forEach(id => { document.getElementById(id).value = ''; });
+      b.textContent = 'Annonce envoyée ✓'; setTimeout(() => { b.textContent = 'Envoyer l\'annonce à tous'; }, 3000);
+    } catch (e) { alert(e.message); }
+    finally { b.disabled = false; }
+  });
+});
+</script>

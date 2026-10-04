@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1100" width="800" height="1100">
+<rect width="800" height="1100" fill="#3f8a5a"/>
+<circle cx="640" cy="230" r="120" fill="#f6f1e7" opacity=".12"/><circle cx="150" cy="900" r="180" fill="#f6f1e7" opacity=".08"/>
+<rect x="60" y="600" width="680" height="300" rx="36" fill="#f6f1e7"/>
+<path d="M200 600 L240 540 L280 600 Z" fill="#f6f1e7"/>
+<text x="400" y="420" font-family="Georgia, serif" font-size="64" font-weight="700" fill="#f6f1e7" text-anchor="middle">Fin</text>
+<text x="400" y="725" font-family="Arial, sans-serif" font-size="34" fill="#3f8a5a" text-anchor="middle">Nommez-les 001.jpg, 002.jpg, 003.jpg…</text>
+<text x="400" y="780" font-family="Arial, sans-serif" font-size="34" fill="#3f8a5a" text-anchor="middle">et ajoutez la série dans l'index.</text>
+</svg>

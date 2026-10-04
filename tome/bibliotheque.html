@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bibliothèque | Tòme</title>
+<meta name="description" content="Webtoons et contes à lire sur Tòme, écrits par l&#x27;équipe et par les élèves.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tome.css">
+</head>
+<body data-page="catalogue">
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="index.html" class="logo" aria-label="Tòme, accueil">
+      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true" width="30" height="30">
+        <rect x="4" y="5" width="7" height="23" rx="1.5" fill="currentColor"/>
+        <rect x="12.5" y="8" width="6" height="20" rx="1.5" fill="var(--accent)"/>
+        <rect x="20" y="4" width="8" height="24" rx="1.5" transform="rotate(8 24 16)" fill="var(--gold)"/>
+      </svg>
+      Tòme
+    </a>
+    <ul>
+      <li><a href="encyclopedie.html">Encyclopédie</a></li>
+      <li><a href="bibliotheque.html">Bibliothèque</a></li>
+      <li><a href="examens.html">Examens</a></li>
+      <li><a href="missions.html">Missions</a></li>
+      <li><a href="a-propos.html">À propos</a></li>
+      <li><a href="carrieres.html">Carrières</a></li>
+      <li class="menu-only"><a href="connexion.html">Se connecter</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="connexion.html" class="btn btn-ghost">Se connecter</a>
+      <a href="inscription.html" class="btn btn-primary">Commencer</a>
+      <button class="menu-toggle" aria-label="Ouvrir le menu" data-menu-toggle>
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="wrap reveal">
+      <span class="eyebrow">Bibliothèque</span>
+      <h1>Des histoires à lire, <em>et à écrire.</em></h1>
+      <p>Webtoons et contes à lire sur le téléphone, écrits par l'équipe Tòme et par les élèves eux-mêmes.</p>
+      <div class="ctas"><a href="publier.html" class="btn btn-primary">Publier mon histoire</a><a href="#series" class="btn btn-ghost">Parcourir</a></div>
+    </div>
+  </section>
+
+  <section class="block tight" id="series">
+    <div class="wrap">
+      <div id="lib-continue" hidden style="margin-bottom:28px;"></div>
+      <div class="toolbar">
+        <div class="chips" id="lib-filters"><button class="chip on" data-type="tous">Tout</button><button class="chip" data-type="webtoon">Webtoons</button><button class="chip" data-type="conte">Contes</button></div>
+        <label class="search" style="margin-top:0;max-width:340px;width:100%;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2"/><path d="M19 19v3H6a2 2 0 0 1-2-2"/></svg><input type="search" id="lib-search" placeholder="Titre, genre, auteur…" aria-label="Rechercher une histoire"></label>
+      </div>
+      <h2 class="lib-h">Séries Tòme</h2>
+      <div class="books" id="lib-grid"></div>
+      <h2 class="lib-h" style="margin-top:56px;">Créations des élèves</h2>
+      <p class="small" style="margin:-8px 0 18px;">Chaque chapitre est relu par l'équipe Tòme avant d'être publié.</p>
+      <div class="books" id="lib-com"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="cta-band reveal">
+        <div>
+          <span class="eyebrow">Vous écrivez ou dessinez ?</span>
+          <h2 style="margin-top:12px;">Publiez votre webtoon ou votre conte.</h2>
+          <p>Envoyez vos chapitres, l'équipe les relit, puis toute la communauté Tòme peut les lire.</p>
+        </div>
+        <div class="actions"><a href="publier.html" class="btn btn-primary">Publier un chapitre</a></div>
+      </div>
+    </div>
+  </section>
+<script src="js/bibliotheque-data.js"></script>
+<script src="js/bibliotheque.js" defer></script>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <a href="index.html" class="logo">
+          <svg viewBox="0 0 32 32" fill="none" aria-hidden="true" width="30" height="30">
+        <rect x="4" y="5" width="7" height="23" rx="1.5" fill="currentColor"/>
+        <rect x="12.5" y="8" width="6" height="20" rx="1.5" fill="var(--accent)"/>
+        <rect x="20" y="4" width="8" height="24" rx="1.5" transform="rotate(8 24 16)" fill="var(--gold)"/>
+      </svg>
+          Tòme
+        </a>
+        <p class="tag">Compagnie haïtienne pour l'intégration et le développement de l'éducation haïtienne.</p>
+      </div>
+      <div>
+        <h4>Plateforme</h4>
+        <ul>
+          <li><a href="encyclopedie.html">Encyclopédie</a></li>
+          <li><a href="bibliotheque.html">Bibliothèque</a></li>
+          <li><a href="examens.html">Examens</a></li>
+          <li><a href="missions.html">Missions</a></li>
+          <li><a href="index.html#profils">Pour qui</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Entreprise</h4>
+        <ul>
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="carrieres.html">Carrières</a></li>
+          <li><a href="mailto:contact@tome.ht">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Compte</h4>
+        <ul>
+          <li><a href="connexion.html">Se connecter</a></li>
+          <li><a href="inscription.html">Créer un compte</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© <span data-year>2026</span> Tòme. Tous droits réservés.</span>
+      <span>Milot, Haïti</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/tome.js"></script>
+</body>
+</html>

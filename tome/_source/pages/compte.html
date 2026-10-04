@@ -1,0 +1,44 @@
+@title: Mon compte | Tòme
+@desc: Votre compte Tòme : mot de passe, code de secours.
+@layout: app
+@role:
+@sidebar: [("mon-espace","home","Mon espace"),("messagerie.html","mail","Messagerie"),("compte.html","cog","Paramètres")]
+    <div class="topbar">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <button class="app-menu" data-app-menu aria-label="Menu">{{icon:menu:20}}</button>
+        <div><span class="eyebrow">Paramètres</span><h1>Mon compte</h1><p>Votre adresse Tòme, votre mot de passe et votre code de secours.</p></div>
+      </div>
+    </div>
+    <div id="c-msg"></div>
+    <div class="panels">
+      <div class="stack">
+        <div class="panel">
+          <div class="panel-head"><h2>Changer mon mot de passe</h2></div>
+          <form class="form-grid" id="f-pw">
+            <div class="field"><label for="pw-old">Mot de passe actuel</label><input id="pw-old" type="password" autocomplete="current-password" required></div>
+            <div class="form-row"><div class="field"><label for="pw-new">Nouveau mot de passe</label><input id="pw-new" type="password" autocomplete="new-password" minlength="8" required></div><div class="field"><label for="pw-new2">Confirmation</label><input id="pw-new2" type="password" autocomplete="new-password" minlength="8" required></div></div>
+            <div><button class="btn btn-primary" type="submit">Changer le mot de passe</button></div>
+            <p class="small">Vos autres appareils seront déconnectés.</p>
+          </form>
+        </div>
+        <div class="panel" id="p-aide" hidden>
+          <div class="panel-head"><h2>Aider quelqu'un à retrouver son compte</h2></div>
+          <p class="small" style="margin-bottom:12px;" id="aide-texte"></p>
+          <div class="install-row"><input id="aide-id" placeholder="Adresse Tòme ou e-mail de la personne" autocapitalize="none"><button class="tbtn primary" id="aide-go">Créer un code</button></div>
+          <div id="aide-res" style="margin-top:14px;"></div>
+        </div>
+      </div>
+      <div class="stack">
+        <div class="panel">
+          <div class="panel-head"><h2>Mon identité</h2></div>
+          <div class="nb-list" id="c-info"></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2>Code de secours</h2><span class="chip" id="cs-etat"></span></div>
+          <p class="small" style="margin-bottom:12px;">Il permet de choisir un nouveau mot de passe si vous l'oubliez, sans e-mail. Gardez-le dans un cahier ou en photo. Un nouveau code remplace l'ancien.</p>
+          <div class="install-row"><input id="cs-pw" type="password" placeholder="Votre mot de passe" autocomplete="current-password"><button class="tbtn primary" id="cs-go">Nouveau code</button></div>
+          <div id="cs-res" style="margin-top:14px;"></div>
+        </div>
+      </div>
+    </div>
+<script src="js/compte.js" defer></script>

@@ -1,0 +1,58 @@
+@title: Mon espace | Tòme
+@desc: Espace élève Tòme.
+@layout: app
+@role: eleve
+@sidebar: [('espace-eleve.html', 'home', 'Accueil'), ('#lecture', 'book', 'Encyclopédie'), ('#entrainements', 'check', 'Entraînements'), ('#missions', 'coin', 'Missions'), ('atelier.html', 'code', 'Atelier'), ('mes-notes.html', 'chart', 'Mes notes'), ('feuillets.html', 'check', 'Feuillets du bac'), ('tome-ia.html', 'chat', 'Tòme IA'), ('messagerie.html', 'mail', 'Messagerie'), ('group', 'Compte'), ('compte.html', 'cog', 'Paramètres')]
+    <div class="topbar">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <button class="app-menu" data-app-menu aria-label="Menu">{{icon:menu:20}}</button>
+        <div>
+          <h1>Bonjour, <span data-user-first>Invité</span>.</h1>
+          <p>Voici où vous en êtes cette semaine.</p>
+        </div>
+      </div>
+      <div class="right">
+        <span class="demo-note" hidden>Données de démonstration</span>
+        <a href="encyclopedie.html" class="btn btn-primary">Explorer</a>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="k">Articles lus</div><div class="v">24</div><div class="d up">+5 cette semaine</div></div>
+      <div class="stat"><div class="k">Moyenne aux entraînements</div><div class="v">78 %</div><div class="d up">+6 points</div></div>
+      <div class="stat"><div class="k">Missions réalisées</div><div class="v">3</div><div class="d">1 en cours</div></div>
+      <div class="stat"><div class="k">Gains du mois</div><div class="v">2 750 HTG</div><div class="d">Versés le 30</div></div>
+    </div>
+    <div class="panels">
+      <div class="stack">
+        <div class="panel" id="lecture">
+          <div class="panel-head"><h2>Continuer la lecture</h2><a href="encyclopedie.html">Tout voir</a></div>
+          <div class="list">
+            <div class="row"><div class="grow"><div class="t">La Révolution haïtienne (1791 à 1804)</div><div class="s" style="margin-bottom:8px;">Histoire · disponible hors ligne</div><div class="bar "><i style="width:65%"></i></div></div><span class="s" style="min-width:40px;text-align:right;">65%</span></div>
+            <div class="row"><div class="grow"><div class="t">Les équations du second degré</div><div class="s" style="margin-bottom:8px;">Mathématiques · disponible hors ligne</div><div class="bar gold"><i style="width:30%"></i></div></div><span class="s" style="min-width:40px;text-align:right;">30%</span></div>
+            <div class="row"><div class="grow"><div class="t">Le réalisme merveilleux</div><div class="s" style="margin-bottom:8px;">Littérature</div><div class="bar ink"><i style="width:85%"></i></div></div><span class="s" style="min-width:40px;text-align:right;">85%</span></div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2>Temps d'étude</h2><span class="s" style="color:var(--muted);font-size:14px;">Heures par jour</span></div>
+          <div class="chart"><div class="col"><i class="" style="height:50%"></i><span>Lun</span></div><div class="col"><i class="" style="height:67%"></i><span>Mar</span></div><div class="col"><i class="" style="height:33%"></i><span>Mer</span></div><div class="col"><i class="" style="height:83%"></i><span>Jeu</span></div><div class="col"><i class="hl" style="height:100%"></i><span>Ven</span></div><div class="col"><i class="" style="height:40%"></i><span>Sam</span></div><div class="col"><i class="" style="height:27%"></i><span>Dim</span></div></div>
+        </div>
+      </div>
+      <div class="stack">
+        <div class="panel" id="entrainements">
+          <div class="panel-head"><h2>Entraînements</h2><a href="examens.html">Voir</a></div>
+          <div class="list">
+            <div class="row"><div class="ico">{{icon:check}}</div><div class="grow"><div class="t">Mathématiques, 9e AF</div><div class="s">Dernier score : 82 %</div></div><span class="chip ok">Réussi</span></div>
+            <div class="row"><div class="ico">{{icon:check}}</div><div class="grow"><div class="t">Sciences expérimentales</div><div class="s">À faire avant vendredi</div></div><span class="chip gold">À faire</span></div>
+            <div class="row"><div class="ico">{{icon:cal}}</div><div class="grow"><div class="t">Concours d'entrée en 7e</div><div class="s">Session blanche samedi</div></div><span class="chip">Prévu</span></div>
+          </div>
+        </div>
+        <div class="panel" id="missions">
+          <div class="panel-head"><h2>Missions pour vous</h2><a href="missions.html">Toutes</a></div>
+          <div class="list">
+            <div class="row"><div class="ico">{{icon:coin}}</div><div class="grow"><div class="t">Traduction français / anglais</div><div class="s">3 h · À distance</div></div><a href="#" class="chip accent">Postuler</a></div>
+            <div class="row"><div class="ico">{{icon:coin}}</div><div class="grow"><div class="t">Transcription audio</div><div class="s">2 h · À distance</div></div><a href="#" class="chip accent">Postuler</a></div>
+            <div class="row"><div class="ico">{{icon:brief}}</div><div class="grow"><div class="t">Saisie de données (en cours)</div><div class="s">Échéance dans 2 jours</div></div><span class="chip gold">En cours</span></div>
+          </div>
+        </div>
+      </div>
+    </div>

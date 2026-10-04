@@ -1,0 +1,97 @@
+@title: Encyclopédie | Tòme
+@desc: L'encyclopédie Tòme : des articles pensés pour le programme haïtien, disponibles hors ligne.
+  <section class="page-hero">
+    <div class="wrap reveal">
+      <span class="eyebrow">Encyclopédie</span>
+      <h1>Le savoir, <em>même sans connexion.</em></h1>
+      <p>Des articles écrits par des enseignants haïtiens, alignés sur le programme, à télécharger une fois et à relire partout.</p>
+    </div>
+  </section>
+
+  <section class="block tight">
+    <div class="wrap">
+      <div class="toolbar">
+        <div class="chips" id="enc-filters" role="group" aria-label="Filtrer par matière"></div>
+        <label class="search" style="margin-top:0; max-width:340px; width:100%;">
+          {{icon:book:18}}
+          <input type="search" placeholder="Rechercher un sujet" id="enc-search" aria-label="Rechercher un sujet">
+        </label>
+      </div>
+      <p class="enc-count" id="enc-count"></p>
+      <div class="grid-3" id="enc-grid"></div>
+      <p class="empty" id="enc-empty">Aucun sujet ne correspond à votre recherche.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="cta-band reveal">
+        <div>
+          <span class="eyebrow">Mode hors ligne</span>
+          <h2 style="margin-top: 12px;">Téléchargez l'encyclopédie complète.</h2>
+          <p>Créez un compte gratuit pour enregistrer les articles sur votre appareil et les consulter sans internet.</p>
+        </div>
+        <div class="actions">
+          <a href="inscription.html" class="btn btn-primary">Créer mon compte</a>
+          <a href="connexion.html" class="btn btn-ghost">J'ai déjà un compte</a>
+        </div>
+      </div>
+    </div>
+  </section>
+<script src="js/encyclopedie-data.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const data = window.TOME_ENCYCLOPEDIE || [];
+  const grid = document.getElementById('enc-grid');
+  const filters = document.getElementById('enc-filters');
+  const search = document.getElementById('enc-search');
+  const empty = document.getElementById('enc-empty');
+  const count = document.getElementById('enc-count');
+  const norm = s => (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  const matieres = [...new Map(data.map(e => [e.matiere_id, e.matiere])).entries()];
+  let active = matieres.some(([id]) => id === location.hash.slice(1)) ? location.hash.slice(1) : 'tous';
+
+  const mkBtn = (id, label) => {
+    const b = document.createElement('button');
+    b.className = 'chip' + (id === active ? ' on' : '');
+    b.textContent = label;
+    b.addEventListener('click', () => {
+      active = id;
+      filters.querySelectorAll('.chip').forEach(x => x.classList.toggle('on', x === b));
+      history.replaceState(null, '', id === 'tous' ? location.pathname : '#' + id);
+      render();
+    });
+    filters.appendChild(b);
+  };
+  mkBtn('tous', 'Toutes les matières');
+  matieres.forEach(([id, label]) => mkBtn(id, label));
+
+  function card(e) {
+    const el = document.createElement(e.publie ? 'a' : 'div');
+    el.className = 'card' + (e.publie ? '' : ' soon');
+    if (e.publie) el.href = 'encyclopedie/' + e.slug + '.html';
+    el.innerHTML = '<div class="chips"><span class="chip accent"></span><span class="chip"></span>' + (e.publie ? '' : '<span class="chip gold">Bientôt</span>') + '</div><h3 style="margin-top:16px;"></h3><p></p><div class="meta"><span></span></div>';
+    const chips = el.querySelectorAll('.chip');
+    chips[0].textContent = e.matiere;
+    chips[1].textContent = e.niveau;
+    el.querySelector('h3').textContent = e.titre;
+    el.querySelector('p').textContent = e.resume;
+    el.querySelector('.meta span').textContent = e.duree + ' de lecture';
+    return el;
+  }
+
+  function render() {
+    const q = norm(search.value.trim());
+    const list = data.filter(e => (active === 'tous' || e.matiere_id === active) &&
+      (!q || norm([e.titre, e.resume, e.matiere, (e.mots_cles || []).join(' ')].join(' ')).includes(q)))
+      .sort((a, b) => (b.publie - a.publie));
+    grid.innerHTML = '';
+    list.forEach(e => grid.appendChild(card(e)));
+    empty.style.display = list.length ? 'none' : 'block';
+    const pub = list.filter(e => e.publie).length;
+    count.textContent = list.length + ' sujet' + (list.length > 1 ? 's' : '') + ' · ' + pub + ' disponible' + (pub > 1 ? 's' : '');
+  }
+  search.addEventListener('input', render);
+  render();
+});
+</script>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1100" width="800" height="1100">
+<rect width="800" height="1100" fill="#c8962e"/>
+<circle cx="640" cy="230" r="120" fill="#14213d" opacity=".12"/><circle cx="150" cy="900" r="180" fill="#14213d" opacity=".08"/>
+<rect x="60" y="600" width="680" height="300" rx="36" fill="#14213d"/>
+<path d="M200 600 L240 540 L280 600 Z" fill="#14213d"/>
+<text x="400" y="420" font-family="Georgia, serif" font-size="64" font-weight="700" fill="#14213d" text-anchor="middle">Case 3</text>
+<text x="400" y="725" font-family="Arial, sans-serif" font-size="34" fill="#c8962e" text-anchor="middle">Déposez vos planches dans le dossier</text>
+<text x="400" y="780" font-family="Arial, sans-serif" font-size="34" fill="#c8962e" text-anchor="middle">bibliotheque/<série>/episode-01/</text>
+</svg>

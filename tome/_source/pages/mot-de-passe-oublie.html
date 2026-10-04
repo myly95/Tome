@@ -1,0 +1,91 @@
+@title: Mot de passe oublié | Tòme
+@desc: Choisir un nouveau mot de passe Tòme avec votre code de secours ou un code donné par votre école.
+@layout: auth
+<div class="auth">
+  <aside class="auth-side">
+    <a href="index.html" class="logo">{{LOGO}} Tòme</a>
+    <blockquote>« Ça arrive à tout le monde. Votre espace vous attend. »</blockquote>
+    <p class="small">Vos carnets, vos notes et vos messages gardés sont toujours là.</p>
+    <svg class="deco" viewBox="0 0 220 320" fill="none" aria-hidden="true">
+      <rect x="10" y="10" width="60" height="300" rx="6" fill="currentColor"/>
+      <rect x="80" y="40" width="50" height="270" rx="6" fill="currentColor"/>
+      <rect x="140" y="0" width="70" height="310" rx="6" fill="currentColor"/>
+    </svg>
+  </aside>
+
+  <div class="auth-main">
+    <div class="auth-box">
+      <a href="index.html" class="logo" style="margin-bottom:28px;">{{LOGO}} Tòme</a>
+      <h1>Mot de passe oublié.</h1>
+      <p>Choisissez un nouveau mot de passe avec l'un de ces codes :</p>
+      <ul class="recover-ways">
+        <li><strong>Votre code de secours</strong>, donné à l'inscription (trois groupes de 4 caractères, par exemple <code>K7QM-3XPA-W9RT</code>).</li>
+        <li><strong>Un code temporaire</strong> demandé à votre école, ou à l'équipe Tòme. Il est valable 24 heures.</li>
+        <li id="way-mail" hidden><strong>Un code reçu par e-mail</strong> : <button type="button" class="linkish" id="send-mail">recevoir un code à l'adresse e-mail de mon compte</button>.</li>
+      </ul>
+
+      <form id="reset-form" class="form-grid" novalidate>
+        <div class="alert err" id="reset-error" role="alert"></div>
+        <div class="alert ok" id="reset-info" role="status"></div>
+        <div class="field"><label for="ident">Adresse e-mail ou adresse Tòme</label><input id="ident" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" required placeholder="prenom.nom@tome"></div>
+        <div class="field"><label for="code">Code</label><input id="code" type="text" autocomplete="one-time-code" autocapitalize="characters" spellcheck="false" required placeholder="XXXX-XXXX-XXXX" style="text-transform:uppercase;letter-spacing:.08em;"></div>
+        <div class="field"><label for="pw1">Nouveau mot de passe</label><input id="pw1" type="password" autocomplete="new-password" minlength="8" required><span class="hint">8 caractères minimum.</span></div>
+        <div class="field"><label for="pw2">Confirmez le nouveau mot de passe</label><input id="pw2" type="password" autocomplete="new-password" minlength="8" required></div>
+        <button type="submit" class="btn btn-primary btn-block">Changer mon mot de passe</button>
+      </form>
+
+      <div id="reset-done" hidden>
+        <h2 class="serif" style="font-size:26px;margin-bottom:10px;">C'est fait.</h2>
+        <p style="color:var(--ink-soft);">Votre mot de passe est changé. Vos autres appareils ont été déconnectés.</p>
+        <div id="new-secours" hidden style="margin-top:18px;">
+          <p style="color:var(--ink-soft);margin-bottom:10px;">Votre ancien code de secours ne marche plus. Voici le nouveau, notez-le dans un endroit sûr :</p>
+          <div class="addr-card"><span data-code></span></div>
+        </div>
+        <a class="btn btn-primary btn-block" id="go" href="index.html" style="margin-top:22px;">Accéder à mon espace</a>
+      </div>
+
+      <p class="alt">Vous vous souvenez ? <a href="connexion.html">Se connecter</a></p>
+    </div>
+  </div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  const $ = id => document.getElementById(id);
+  const api = (TOME_CONFIG.apiBase || '');
+  const err = $('reset-error'), info = $('reset-info');
+  const show = (el, m) => { [err, info].forEach(x => x.classList.remove('show')); if (m) { el.textContent = m; el.classList.add('show'); } };
+  const post = async (path, body) => {
+    const r = await fetch(api + path, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+    const d = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(d.message || 'Une erreur est survenue. Réessayez.');
+    return d;
+  };
+  const pre = new URLSearchParams(location.search).get('id'); if (pre) $('ident').value = pre;
+  try { const r = await fetch(api + '/api/auth/oubli'); if (r.ok && (await r.json()).email) $('way-mail').hidden = false; } catch (e) {}
+  $('send-mail').addEventListener('click', async () => {
+    const ident = $('ident').value.trim();
+    if (!ident) { $('ident').focus(); return show(err, 'Indiquez d’abord votre adresse e-mail ou votre adresse Tòme.'); }
+    try { const d = await post('/api/auth/oubli', { identifiant: ident }); show(info, d.message || 'Code envoyé.'); $('code').focus(); }
+    catch (e) { show(err, e.message); }
+  });
+  $('reset-form').addEventListener('submit', async e => {
+    e.preventDefault();
+    const ident = $('ident').value.trim(), code = $('code').value.trim(), p1 = $('pw1').value, p2 = $('pw2').value;
+    if (!ident) return show(err, 'Indiquez votre adresse e-mail ou votre adresse Tòme.');
+    if (code.replace(/[^a-z0-9]/gi, '').length < 8) return show(err, 'Indiquez le code complet.');
+    if (p1.length < 8) return show(err, 'Le nouveau mot de passe doit contenir au moins 8 caractères.');
+    if (p1 !== p2) return show(err, 'Les deux mots de passe ne sont pas identiques.');
+    const btn = e.target.querySelector('button[type=submit]'); btn.disabled = true;
+    try {
+      const d = await post('/api/auth/reinitialiser', { identifiant: ident, code, nouveau: p1 });
+      TomeAuth.save(d.token, d.user);
+      $('reset-form').hidden = true; document.querySelector('.recover-ways').hidden = true; show(err, '');
+      $('go').href = TomeAuth.dashboardFor(d.user.role);
+      if (d.code_secours) { $('new-secours').hidden = false; $('new-secours').querySelector('[data-code]').textContent = d.code_secours; }
+      $('reset-done').hidden = false;
+    } catch (ex) {
+      show(err, /Failed to fetch|NetworkError/.test(ex.message) ? 'Le serveur Tòme est injoignable. Vérifiez votre connexion.' : ex.message);
+    } finally { btn.disabled = false; }
+  });
+});
+</script>

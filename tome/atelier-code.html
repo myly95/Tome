@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Code | Atelier Tòme</title>
+<meta name="description" content="Carnets Python, R, SQL, JavaScript et web dans le navigateur, avec fichiers et GitHub.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
+<link rel="stylesheet" href="css/tome.css">
+</head>
+<body>
+<div class="app" data-role="">
+  <aside class="sidebar">
+    <a href="index.html" class="logo"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true" width="30" height="30">
+        <rect x="4" y="5" width="7" height="23" rx="1.5" fill="currentColor"/>
+        <rect x="12.5" y="8" width="6" height="20" rx="1.5" fill="var(--accent)"/>
+        <rect x="20" y="4" width="8" height="24" rx="1.5" transform="rotate(8 24 16)" fill="var(--gold)"/>
+      </svg> Tòme</a>
+    <nav>
+      <a href="mon-espace"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg>Mon espace</a><a href="messagerie.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Messagerie</a><div class="group">Atelier</div><a href="atelier.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6l-6 6 6 6M16 6l6 6-6 6"/></svg>Accueil de l'Atelier</a><a href="atelier-code.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6l-6 6 6 6M16 6l6 6-6 6"/></svg>Code</a><a href="abaque.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Abaque et Mesure</a><a href="plume.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>Plume</a><a href="atelier.html#design"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="1.2"/><circle cx="17.5" cy="10.5" r="1.2"/><circle cx="8.5" cy="7.5" r="1.2"/><circle cx="6.5" cy="12.5" r="1.2"/><path d="M12 2a10 10 0 0 0 0 20c1.4 0 2-1 2-2 0-.6-.3-1-.6-1.4-.3-.4-.5-.8-.5-1.3 0-1.1.9-2 2-2h2.3A4.8 4.8 0 0 0 22 10.6C22 5.8 17.5 2 12 2z"/></svg>Design</a><a href="atelier.html#labo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.7 1.7 0 0 0 6 21h12a1.7 1.7 0 0 0 1.5-2.5L14 9V3"/><path d="M7 15h10"/></svg>Labo</a><div class="group">Ressources</div><a href="encyclopedie.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2"/><path d="M19 19v3H6a2 2 0 0 1-2-2"/></svg>Encyclopédie</a><a href="examens.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg>Entraînements</a>
+    </nav>
+    <div class="me">
+      <div class="avatar" data-user-initials>IN</div>
+      <div class="who"><strong data-user-name>Invité</strong><span data-user-role></span><span class="addr" data-user-address></span></div>
+      <button data-logout aria-label="Se déconnecter" title="Se déconnecter"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/></svg></button>
+    </div>
+  </aside>
+  <main class="main">
+    <div class="topbar" style="margin-bottom:8px;">
+      <div style="display:flex;gap:14px;align-items:flex-start;flex:1;min-width:0;">
+        <button class="app-menu" data-app-menu aria-label="Menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+        <div style="flex:1;min-width:0;">
+          <span class="eyebrow"><a href="atelier.html">Atelier</a> · Code</span>
+          <input class="nb-title" id="nb-title" value="Carnet" aria-label="Titre du carnet" spellcheck="false">
+        </div>
+      </div>
+    </div>
+
+    <div class="nb-toolbar" role="toolbar" aria-label="Actions du carnet">
+      <button class="tbtn primary" id="run-all"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4v16l13-8z"/></svg>Tout exécuter</button>
+      <button class="tbtn" id="add-code">+ Code</button>
+      <button class="tbtn" id="add-md">+ Texte</button>
+      <label class="tbtn select" title="Langage par défaut du carnet"><select id="nb-lang" aria-label="Langage du carnet"></select></label>
+      <button class="tbtn" id="restart" title="Efface toutes les variables">Redémarrer</button>
+      <button class="tbtn" id="clear-out">Effacer les sorties</button>
+      <span class="sep"></span>
+      <button class="tbtn" id="open-files"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>Fichiers <span id="files-count"></span></button>
+      <button class="tbtn" id="open-libs"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2"/><path d="M19 19v3H6a2 2 0 0 1-2-2"/></svg>Bibliothèques</button>
+      <button class="tbtn" id="open-gh"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.1c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg>GitHub</button>
+      <button class="tbtn" id="open-nb">Mes carnets</button>
+      <button class="tbtn" id="save-cloud" title="Enregistrer ce carnet dans mon espace Tòme"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg>Enregistrer</button>
+      <span class="kernels" id="kernels" aria-live="polite"></span>
+    </div>
+
+    <div class="nb" id="nb"></div>
+    <div class="add-cell">
+      <button class="tbtn" data-add="code">+ Cellule de code</button>
+      <button class="tbtn" data-add="markdown">+ Cellule de texte</button>
+    </div>
+    <p class="nb-help">
+      <kbd>Maj</kbd> + <kbd>Entrée</kbd> exécuter et passer à la suivante · <kbd>Ctrl</kbd> + <kbd>Entrée</kbd> exécuter sur place ·
+      Chaque cellule peut avoir son propre langage (menu en haut à droite de la cellule). Glissez des fichiers n'importe où sur la page pour les importer.
+    </p>
+    <div class="dropzone" id="dropzone"><div>Déposez vos fichiers pour les importer</div></div>
+
+    <!-- Mes carnets -->
+    <dialog class="dlg" id="dlg-nb" aria-labelledby="dlg-nb-t">
+      <div class="dlg-head"><h2 id="dlg-nb-t">Mes carnets</h2><button data-close aria-label="Fermer">×</button></div>
+      <div class="dlg-body">
+        <div>
+          <h3>Nouveau carnet</h3>
+          <div class="templates" style="margin-top:10px;">
+            <button data-tpl="python"><strong>Python</strong><span>Données, sciences, IA</span></button>
+            <button data-tpl="r"><strong>R</strong><span>Statistiques</span></button>
+            <button data-tpl="sql"><strong>SQL</strong><span>Bases de données</span></button>
+            <button data-tpl="javascript"><strong>JavaScript</strong><span>Programmation</span></button>
+            <button data-tpl="html"><strong>Web</strong><span>HTML et CSS</span></button>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <button class="tbtn" id="import">Ouvrir un fichier .ipynb</button>
+          <button class="tbtn" id="export">Télécharger ce carnet (.ipynb)</button>
+          <input type="file" id="ipynb-file" accept=".ipynb,application/json" hidden>
+        </div>
+        <div>
+          <h3>Dans mon espace Tòme <span class="quota" id="cloud-nb-quota"></span></h3>
+          <p class="small" style="margin-top:4px;">Disponibles sur tous vos appareils.</p>
+          <div class="nb-list" id="cloud-nb-list" style="margin-top:10px;"></div>
+        </div>
+        <div>
+          <h3>Enregistrés sur cet appareil</h3>
+          <div class="nb-list" id="nb-list" style="margin-top:10px;"></div>
+        </div>
+      </div>
+    </dialog>
+
+    <!-- Fichiers -->
+    <dialog class="dlg" id="dlg-files" aria-labelledby="dlg-files-t">
+      <div class="dlg-head"><h2 id="dlg-files-t">Fichiers</h2><button data-close aria-label="Fermer">×</button></div>
+      <div class="dlg-body">
+        <p class="small">Vos fichiers sont partagés entre tous les langages et conservés sur cet appareil. Les fichiers créés par votre code (graphiques enregistrés, CSV, Excel…) apparaissent ici automatiquement.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <button class="tbtn primary" id="upload-btn">Importer des fichiers</button>
+          <button class="tbtn" id="dl-all">Tout télécharger</button>
+          <button class="tbtn" id="sql-export">Enregistrer la base SQL</button>
+          <input type="file" id="upload" multiple hidden>
+        </div>
+        <div class="nb-list" id="file-list"></div>
+        <div>
+          <h3>Dans mon espace Tòme <span class="quota" id="cloud-file-quota"></span></h3>
+          <p class="small" style="margin-top:4px;">Sauvegardés sur le serveur, disponibles sur tous vos appareils.</p>
+          <div class="nb-list" id="cloud-file-list" style="margin-top:10px;"></div>
+        </div>
+        <div class="card" style="padding:16px 18px;">
+          <h3 style="font-size:16px;">Lire un fichier dans votre code</h3>
+          <div class="output" style="margin-top:6px;"><pre>Python      pd.read_csv("donnees.csv")   ·   pd.read_excel("notes.xlsx")
+R           read.csv("donnees.csv")
+JavaScript  lireTexte("donnees.csv")
+SQL         bouton « Vers SQL » à côté d'un CSV</pre></div>
+        </div>
+      </div>
+    </dialog>
+
+    <!-- Bibliothèques -->
+    <dialog class="dlg" id="dlg-libs" aria-labelledby="dlg-libs-t">
+      <div class="dlg-head"><h2 id="dlg-libs-t">Bibliothèques</h2><button data-close aria-label="Fermer">×</button></div>
+      <div class="dlg-body">
+        <div class="tabs"><button class="chip on" data-libtab="python">Python</button><button class="chip" data-libtab="r">R</button></div>
+        <div data-libpane="python" style="display:grid;gap:14px;">
+          <p class="small">Les bibliothèques s'installent automatiquement au premier <code>import</code>. Vous pouvez aussi écrire <code>%pip install nom</code> dans une cellule. Cliquez sur un nom pour le préparer à l'installation.</p>
+          <div><h3>Sciences des données et calcul</h3><div class="libs" style="margin-top:8px;">
+            <button class="chip" data-try="numpy">numpy</button><button class="chip" data-try="pandas">pandas</button><button class="chip" data-try="scipy">scipy</button><button class="chip" data-try="sympy">sympy</button><button class="chip" data-try="statsmodels">statsmodels</button><button class="chip" data-try="networkx">networkx</button><button class="chip" data-try="openpyxl">openpyxl</button>
+          </div></div>
+          <div><h3>Apprentissage automatique</h3><div class="libs" style="margin-top:8px;">
+            <button class="chip" data-try="scikit-learn">scikit-learn</button><button class="chip" data-try="xgboost">xgboost</button><button class="chip" data-try="lightgbm">lightgbm</button><button class="chip" data-try="nltk">nltk</button>
+          </div></div>
+          <div><h3>Graphiques</h3><div class="libs" style="margin-top:8px;">
+            <button class="chip" data-try="matplotlib">matplotlib</button><button class="chip" data-try="seaborn">seaborn</button><button class="chip" data-try="plotly">plotly</button><button class="chip" data-try="altair">altair</button>
+          </div></div>
+          <div><h3>Images, texte et web</h3><div class="libs" style="margin-top:8px;">
+            <button class="chip" data-try="pillow">pillow</button><button class="chip" data-try="scikit-image">scikit-image</button><button class="chip" data-try="opencv-python">opencv-python</button><button class="chip" data-try="beautifulsoup4">beautifulsoup4</button><button class="chip" data-try="lxml">lxml</button><button class="chip" data-try="pyyaml">pyyaml</button>
+          </div></div>
+          <div class="install-row"><input id="lib-input-python" placeholder="Nom du paquet PyPI (ex. seaborn)"><button class="tbtn primary" id="lib-install-python">Installer</button></div>
+          <p class="small" id="lib-status-python"></p>
+          <p class="small">Tous les paquets en pur Python de PyPI s'installent. Les paquets compilés doivent exister en version WebAssembly : c'est le cas de plus de 300 d'entre eux. PyTorch et TensorFlow ne sont pas disponibles dans le navigateur.</p>
+        </div>
+        <div data-libpane="r" hidden style="display:grid;gap:14px;">
+          <p class="small">Les paquets CRAN s'installent automatiquement avec <code>library(nom)</code> ou <code>install.packages("nom")</code>.</p>
+          <div><h3>Populaires</h3><div class="libs" style="margin-top:8px;">
+            <button class="chip" data-try="dplyr">dplyr</button><button class="chip" data-try="ggplot2">ggplot2</button><button class="chip" data-try="tidyr">tidyr</button><button class="chip" data-try="readr">readr</button><button class="chip" data-try="readxl">readxl</button><button class="chip" data-try="stringr">stringr</button><button class="chip" data-try="lubridate">lubridate</button><button class="chip" data-try="data.table">data.table</button>
+          </div></div>
+          <div class="install-row"><input id="lib-input-r" placeholder="Nom du paquet R (ex. ggplot2)"><button class="tbtn primary" id="lib-install-r">Installer</button></div>
+          <p class="small" id="lib-status-r"></p>
+        </div>
+      </div>
+    </dialog>
+
+    <!-- GitHub -->
+    <dialog class="dlg" id="dlg-gh" aria-labelledby="dlg-gh-t">
+      <div class="dlg-head"><h2 id="dlg-gh-t">GitHub</h2><button data-close aria-label="Fermer">×</button></div>
+      <div class="dlg-body">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;" id="gh-user-row"><span id="gh-user"></span><button class="tbtn" id="gh-logout" hidden>Se déconnecter</button></div>
+        <details>
+          <summary style="cursor:pointer;font-weight:600;">Se connecter avec un jeton d'accès</summary>
+          <div style="display:grid;gap:10px;margin-top:12px;">
+            <p class="small">Créez un jeton « fine-grained » sur github.com, dans Settings, Developer settings, Personal access tokens. Limitez-le aux dépôts voulus avec l'autorisation « Contents : Read and write ». Le jeton reste sur cet appareil et n'est envoyé qu'à GitHub.</p>
+            <div class="install-row"><input id="gh-token" type="password" placeholder="github_pat_…" autocomplete="off"><button class="tbtn primary" id="gh-connect">Se connecter</button></div>
+          </div>
+        </details>
+        <div>
+          <h3>Dépôt</h3>
+          <div class="install-row" style="margin-top:8px;">
+            <input id="gh-repo" placeholder="propriétaire/dépôt">
+            <input id="gh-branch" placeholder="branche (facultatif)" style="max-width:170px;">
+            <button class="tbtn" id="gh-browse">Parcourir</button>
+          </div>
+        </div>
+        <div>
+          <div class="small" id="gh-path" style="font-family:ui-monospace,Menlo,monospace;margin-bottom:8px;"></div>
+          <div class="nb-list" id="gh-tree" style="max-height:260px;overflow:auto;"></div>
+        </div>
+        <div class="card" style="padding:16px 18px;display:grid;gap:10px;">
+          <h3 style="font-size:16px;">Enregistrer sur GitHub</h3>
+          <div class="field"><label for="gh-save-what">Quoi</label><select id="gh-save-what"></select></div>
+          <div class="field"><label for="gh-save-path">Chemin dans le dépôt</label><input id="gh-save-path"></div>
+          <div class="field"><label for="gh-msg">Message du commit</label><input id="gh-msg"></div>
+          <div><button class="tbtn primary" id="gh-save">Enregistrer (commit)</button></div>
+          <p class="small" id="gh-status"></p>
+        </div>
+      </div>
+    </dialog>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/r/r.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/sql/sql.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/markdown/markdown.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/matchbrackets.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closebrackets.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/display/placeholder.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="js/atelier-code.js" defer></script>
+
+  </main>
+</div>
+
+<script src="js/tome.js"></script>
+</body>
+</html>

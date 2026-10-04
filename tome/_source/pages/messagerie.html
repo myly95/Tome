@@ -1,0 +1,63 @@
+@title: Messagerie | Tòme
+@desc: Messagerie Tòme entre élèves, enseignants, écoles et partenaires.
+@layout: app
+@role:
+@sidebar: [("mon-espace","home","Mon espace"),("messagerie.html","mail","Messagerie"),("atelier.html","code","Atelier"),("encyclopedie.html","book","Encyclopédie")]
+    <div class="topbar" style="margin-bottom:20px;">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <button class="app-menu" data-app-menu aria-label="Menu">{{icon:menu:20}}</button>
+        <div>
+          <h1>Messagerie</h1>
+          <p>Écrivez à vos camarades, créez des groupes, échangez avec vos enseignants et votre école.</p>
+          <p class="my-address" id="my-address" hidden>Votre adresse Tòme : <strong></strong></p>
+        </div>
+      </div>
+      <div class="right"><span class="demo-note" id="chat-demo" hidden>Données de démonstration</span><button class="tbtn" id="son-toggle" aria-pressed="true"></button></div>
+    </div>
+    <p class="alert err show" id="chat-error" hidden></p>
+
+    <div class="chat" id="chat">
+      <section class="chat-side" aria-label="Conversations">
+        <div class="chat-search">
+          <input type="search" id="people-search" placeholder="Écrire à… (nom ou adresse Tòme)" aria-label="Rechercher une personne" autocomplete="off">
+          <div class="people-results" id="people-results" hidden></div>
+          <button type="button" class="tbtn new-group" id="new-group">{{icon:users:15}}Nouveau groupe</button>
+        </div>
+        <div class="conv-list" id="conv-list"><p class="chat-empty">Chargement…</p></div>
+        <p class="retention-note" id="retention-note" hidden></p>
+      </section>
+      <section class="chat-main" aria-label="Conversation">
+        <header class="thread-head" id="thread-head"><p class="chat-empty" style="margin:0;">Choisissez une conversation.</p></header>
+        <div class="thread" id="thread" aria-live="polite"></div>
+        <form class="composer" id="composer" hidden>
+          <textarea id="composer-text" rows="1" placeholder="Votre message…" aria-label="Votre message" maxlength="4000"></textarea>
+          <button type="submit" class="btn btn-primary">Envoyer</button>
+        </form>
+      </section>
+    </div>
+
+    <dialog class="dlg" id="dlg-groupe" aria-labelledby="g-title">
+      <div class="dlg-head"><h2 id="g-title">Nouveau groupe</h2><button data-close aria-label="Fermer">×</button></div>
+      <div class="dlg-body" style="display:grid;gap:14px;">
+        <div class="field"><label for="g-nom">Nom du groupe</label><input id="g-nom" maxlength="60" placeholder="Ex. Révisions NS4, Club de lecture"></div>
+        <div class="field"><label for="g-search">Membres</label>
+          <div class="chat-search" style="padding:0;border:none;"><input type="search" id="g-search" placeholder="Nom ou adresse Tòme" autocomplete="off"><div class="people-results" id="g-results" hidden></div></div>
+          <div class="chips" id="g-chips" style="margin-top:8px;"></div>
+        </div>
+        <button class="btn btn-primary" id="g-create">Créer le groupe</button>
+        <p class="small">Tout le monde dans le groupe voit les messages. Les messages disparaissent au bout de 24 heures, sauf ceux qu'un membre garde (☆).</p>
+      </div>
+    </dialog>
+
+    <dialog class="dlg" id="dlg-membres" aria-labelledby="m-title">
+      <div class="dlg-head"><h2 id="m-title">Membres</h2><button data-close aria-label="Fermer">×</button></div>
+      <div class="dlg-body" style="display:grid;gap:14px;">
+        <div class="install-row" id="m-rename" hidden><input id="m-nom" maxlength="60" aria-label="Nom du groupe"><button class="tbtn" id="m-rename-btn">Renommer</button></div>
+        <div class="nb-list" id="m-list"></div>
+        <div class="field" id="m-add" hidden><label for="m-search">Ajouter quelqu'un</label>
+          <div class="chat-search" style="padding:0;border:none;"><input type="search" id="m-search" placeholder="Nom ou adresse Tòme" autocomplete="off"><div class="people-results" id="m-results" hidden></div></div>
+        </div>
+        <button class="btn btn-ghost" id="m-leave">Quitter le groupe</button>
+      </div>
+    </dialog>
+<script src="js/messagerie.js" defer></script>

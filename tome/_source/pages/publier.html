@@ -1,0 +1,40 @@
+@title: Publier | Bibliothèque Tòme
+@desc: Publier un chapitre de webtoon ou de conte dans la Bibliothèque Tòme.
+@layout: app
+@role: 
+@page: publier
+@sidebar: [("mon-espace","home","Mon espace"),("messagerie.html","mail","Messagerie"),("group","Bibliothèque"),("bibliotheque.html","book","Lire"),("publier.html","pen","Publier"),("moderation.html","check","Modération"),("group","Atelier"),("atelier.html","code","Atelier")]
+    <div class="topbar">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <button class="app-menu" data-app-menu aria-label="Menu">{{icon:menu:20}}</button>
+        <div><span class="eyebrow">Bibliothèque</span><h1>Publier un chapitre</h1><p>Votre chapitre sera relu par l'équipe Tòme avant d'être publié. Vous recevrez la réponse dans votre messagerie.</p></div>
+      </div>
+    </div>
+    <div class="panels">
+      <div class="panel">
+        <div id="pub-login" hidden><p>Connectez-vous pour publier.</p><a class="btn btn-primary" href="connexion.html" style="margin-top:12px;">Se connecter</a></div>
+        <form id="pub-form" class="form-grid">
+          <div class="alert err" id="pub-err" role="alert"></div>
+          <div class="field"><label for="pub-serie">Série</label><select id="pub-serie"><option value="">Nouvelle série…</option></select></div>
+          <div id="pub-new" class="form-grid" style="padding:16px;border:1px dashed var(--line);border-radius:12px;">
+            <div class="field"><label for="pub-stitre">Titre de la série</label><input id="pub-stitre" maxlength="100"></div>
+            <div class="field"><label>Type</label><div style="display:flex;gap:18px;"><label class="check"><input type="radio" name="type" value="webtoon" checked> Webtoon (images)</label><label class="check"><input type="radio" name="type" value="conte"> Conte (texte)</label></div></div>
+            <div class="form-row"><div class="field"><label for="pub-genre">Genre</label><input id="pub-genre" maxlength="40" placeholder="Aventure, fantastique, humour…"></div></div>
+            <div class="field"><label for="pub-resume">Résumé</label><textarea id="pub-resume" rows="3" maxlength="600"></textarea></div>
+          </div>
+          <div class="field"><label for="pub-titre">Titre du chapitre</label><input id="pub-titre" maxlength="120" required></div>
+          <div id="pub-images" class="field">
+            <label>Planches (dans l'ordre de lecture, 20 maximum)</label>
+            <label class="dropin"><input type="file" id="pub-files" accept="image/png,image/jpeg,image/webp" multiple hidden><span>Choisir des images</span><small>Elles sont automatiquement allégées pour le téléphone.</small></label>
+            <span class="hint" id="pub-count"></span>
+            <div class="page-thumbs" id="pub-pages"></div>
+          </div>
+          <div id="pub-texte" class="field" hidden><label for="pub-text">Texte du chapitre</label><textarea id="pub-text" rows="14" maxlength="60000" placeholder="Il était une fois…"></textarea><span class="hint">Laissez une ligne vide entre les paragraphes.</span></div>
+          <label class="check"><input type="checkbox" required> Je certifie être l'auteur ou l'autrice de ce chapitre, et qu'il respecte les règles de la Bibliothèque (pas de violence choquante, pas de contenu blessant).</label>
+          <button class="btn btn-primary" id="pub-send">Envoyer pour relecture</button>
+        </form>
+      </div>
+      <div class="panel"><div class="panel-head"><h2>Mes envois</h2></div><div class="nb-list" id="pub-mine"></div></div>
+    </div>
+<script src="js/bibliotheque-data.js"></script>
+<script src="js/bibliotheque.js" defer></script>

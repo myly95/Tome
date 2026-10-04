@@ -1,0 +1,34 @@
+@title: Mes notes | Tòme
+@desc: Les bulletins publiés par votre école, vos moyennes et votre progression.
+@layout: app
+@role: eleve
+@page: notes
+@sidebar: [('espace-eleve.html', 'home', 'Accueil'), ('mes-notes.html', 'chart', 'Mes notes'), ('feuillets.html', 'check', 'Feuillets du bac'), ('atelier.html', 'code', 'Atelier'), ('tome-ia.html', 'chat', 'Tòme IA'), ('messagerie.html', 'mail', 'Messagerie')]
+    <div class="topbar">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <button class="app-menu" data-app-menu aria-label="Menu">{{icon:menu:20}}</button>
+        <div><span class="eyebrow">Bulletins</span><h1>Mes notes</h1><p>Les bulletins publiés par votre école. Vous seul·e et votre école y avez accès.</p></div>
+      </div>
+      <div class="right"><button class="tbtn" id="print" hidden>Imprimer</button></div>
+    </div>
+    <div class="panels">
+      <div class="stack" id="bulletins"><p class="chat-empty">Chargement…</p></div>
+      <div class="stack">
+        <div class="panel" id="ecole-panel">
+          <div class="panel-head"><h2>Mon école</h2></div>
+          <div id="ecole-etat"></div>
+          <div id="ecole-form" hidden style="display:grid;gap:12px;margin-top:6px;">
+            <div class="field"><label for="ecole-q">Établissement</label><input id="ecole-q" placeholder="Tapez le nom de votre école"></div>
+            <div class="field"><label for="ecole-classe">Classe</label><select id="ecole-classe"><option>7e AF</option><option>8e AF</option><option>9e AF</option><option>NS1</option><option>NS2</option><option>NS3</option><option>NS4</option></select></div>
+            <button class="btn btn-primary" id="ecole-demander">Demander le rattachement</button>
+            <p class="small">Votre école confirme que vous êtes bien son élève. Vous recevrez un message dans votre messagerie.</p>
+          </div>
+        </div>
+        <div class="panel" id="evol-panel" hidden>
+          <div class="panel-head"><h2>Progression</h2><span class="small" id="evol-scale"></span></div>
+          <div class="notes-evol" id="evol"></div>
+        </div>
+      </div>
+    </div>
+<script src="js/ecole-choix.js" defer></script>
+<script src="js/mes-notes.js" defer></script>

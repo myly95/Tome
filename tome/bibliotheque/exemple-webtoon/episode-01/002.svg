@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1100" width="800" height="1100">
+<rect width="800" height="1100" fill="#b5442c"/>
+<circle cx="640" cy="230" r="120" fill="#fff7ef" opacity=".12"/><circle cx="150" cy="900" r="180" fill="#fff7ef" opacity=".08"/>
+<rect x="60" y="600" width="680" height="300" rx="36" fill="#fff7ef"/>
+<path d="M200 600 L240 540 L280 600 Z" fill="#fff7ef"/>
+<text x="400" y="420" font-family="Georgia, serif" font-size="64" font-weight="700" fill="#fff7ef" text-anchor="middle">Case 2</text>
+<text x="400" y="725" font-family="Arial, sans-serif" font-size="34" fill="#b5442c" text-anchor="middle">Les images s'enchaînent sans espace,</text>
+<text x="400" y="780" font-family="Arial, sans-serif" font-size="34" fill="#b5442c" text-anchor="middle">pour une lecture fluide sur téléphone.</text>
+</svg>

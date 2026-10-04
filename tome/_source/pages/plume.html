@@ -1,0 +1,70 @@
+@title: Plume | Atelier Tòme
+@desc: Plume, le traitement de texte de Tòme : mise en forme, images, tableaux, export Word et PDF.
+@layout: app
+@role:
+@sidebar: [("mon-espace","home","Mon espace"),("messagerie.html","mail","Messagerie"),("group","Atelier"),("atelier.html","code","Accueil de l'Atelier"),("atelier-code.html","code","Code"),("abaque.html","chart","Abaque et Mesure"),("plume.html","pen","Plume"),("group","Ressources"),("encyclopedie.html","book","Encyclopédie")]
+    <div class="ab-top no-print">
+      <button class="app-menu" data-app-menu aria-label="Menu">{{icon:menu:20}}</button>
+      <div class="ab-brand"><span class="eyebrow"><a href="atelier.html">Atelier</a> · Plume</span><input id="doc-title" class="nb-title ab-title" aria-label="Titre du document" spellcheck="false"></div>
+      <span class="small" id="doc-count"></span>
+    </div>
+
+    <nav class="ab-menus no-print" aria-label="Menus">
+      <div class="menu"><button>Fichier</button><div class="menu-pop">
+        <button data-action="nouveau">Nouveau document</button>
+        <button data-action="ouvrir">Ouvrir un fichier… <kbd>.plm .docx .txt .md</kbd></button>
+        <button data-action="docs">Mes documents</button>
+        <hr>
+        <button data-action="plm">Enregistrer (.plm) <kbd>Ctrl S</kbd></button>
+        <button data-action="docx">Exporter en Word (.docx)</button>
+        <button data-action="pdf">Exporter en PDF (imprimer)</button>
+        <button data-action="html">Exporter en page web (.html)</button>
+        <hr>
+        <button data-action="espace">Sauvegarder dans mon espace Tòme</button>
+      </div></div>
+    </nav>
+
+    <div class="pl-tools no-print" role="toolbar" aria-label="Mise en forme">
+      <select id="block-style" class="tbtn" aria-label="Style du paragraphe">
+        <option value="p">Paragraphe</option><option value="h1">Titre 1</option><option value="h2">Titre 2</option><option value="h3">Titre 3</option><option value="blockquote">Citation</option>
+      </select>
+      <span class="sep"></span>
+      <button class="tbtn icon" data-cmd="bold" title="Gras (Ctrl B)"><b>G</b></button>
+      <button class="tbtn icon" data-cmd="italic" title="Italique (Ctrl I)"><i>I</i></button>
+      <button class="tbtn icon" data-cmd="underline" title="Souligné (Ctrl U)"><u>S</u></button>
+      <button class="tbtn icon" data-cmd="strikeThrough" title="Barré"><s>ab</s></button>
+      <label class="tbtn icon color" title="Couleur du texte"><input type="color" id="fore-color" value="#b5442c"><span style="border-bottom:3px solid var(--accent)">A</span></label>
+      <label class="tbtn icon color" title="Surligner"><input type="color" id="hilite-color" value="#fff3c4"><span>▣</span></label>
+      <span class="sep"></span>
+      <button class="tbtn icon" data-cmd="insertUnorderedList" title="Liste à puces">•≡</button>
+      <button class="tbtn icon" data-cmd="insertOrderedList" title="Liste numérotée">1≡</button>
+      <button class="tbtn icon" data-cmd="justifyLeft" title="Aligner à gauche">⇤</button>
+      <button class="tbtn icon" data-cmd="justifyCenter" title="Centrer">↔</button>
+      <button class="tbtn icon" data-cmd="justifyRight" title="Aligner à droite">⇥</button>
+      <button class="tbtn icon" data-cmd="justifyFull" title="Justifier">☰</button>
+      <span class="sep"></span>
+      <button class="tbtn" id="btn-link" title="Insérer un lien">Lien</button>
+      <button class="tbtn" id="btn-image" title="Insérer une image">Image</button>
+      <button class="tbtn" id="btn-table" title="Insérer un tableau">Tableau</button>
+      <button class="tbtn" id="btn-pagebreak" title="Saut de page">Saut de page</button>
+      <button class="tbtn" id="btn-clear" title="Effacer la mise en forme">Effacer le format</button>
+      <span class="sep"></span>
+      <button class="tbtn icon" data-cmd="undo" title="Annuler (Ctrl Z)">↶</button>
+      <button class="tbtn icon" data-cmd="redo" title="Rétablir (Ctrl Y)">↷</button>
+    </div>
+
+    <div class="pl-desk">
+      <article class="pl-page" id="editor" contenteditable="true" spellcheck="true" lang="fr" aria-label="Document"></article>
+    </div>
+
+    <input type="file" id="open-file" accept=".plm,.docx,.txt,.md,.html,.htm" hidden>
+    <input type="file" id="image-file" accept="image/png,image/jpeg,image/gif,image/webp" hidden>
+
+    <dialog class="dlg" id="dlg-docs" aria-labelledby="dlg-docs-t">
+      <div class="dlg-head"><h2 id="dlg-docs-t">Mes documents</h2><button data-close aria-label="Fermer">×</button></div>
+      <div class="dlg-body">
+        <div><h3>Sur cet appareil</h3><div class="nb-list" id="docs-local" style="margin-top:10px;"></div></div>
+        <div><h3>Dans mon espace Tòme</h3><div class="nb-list" id="docs-espace" style="margin-top:10px;"></div></div>
+      </div>
+    </dialog>
+<script src="js/plume.js" defer></script>

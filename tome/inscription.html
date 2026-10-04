@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Créer un compte | Tòme</title>
+<meta name="description" content="Créez votre compte Tòme : élève, enseignant, école ou partenaire.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tome.css">
+</head>
+<body>
+<div class="auth">
+  <aside class="auth-side">
+    <a href="index.html" class="logo"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true" width="30" height="30">
+        <rect x="4" y="5" width="7" height="23" rx="1.5" fill="currentColor"/>
+        <rect x="12.5" y="8" width="6" height="20" rx="1.5" fill="var(--accent)"/>
+        <rect x="20" y="4" width="8" height="24" rx="1.5" transform="rotate(8 24 16)" fill="var(--gold)"/>
+      </svg> Tòme</a>
+    <blockquote>« Un pays se lit dans ses élèves. Bienvenue dans la bibliothèque. »</blockquote>
+    <p class="small">L'inscription est gratuite pour les élèves et les enseignants.</p>
+    <svg class="deco" viewBox="0 0 220 320" fill="none" aria-hidden="true">
+      <rect x="10" y="10" width="60" height="300" rx="6" fill="currentColor"/>
+      <rect x="80" y="40" width="50" height="270" rx="6" fill="currentColor"/>
+      <rect x="140" y="0" width="70" height="310" rx="6" fill="currentColor"/>
+    </svg>
+  </aside>
+
+  <div class="auth-main">
+    <div class="auth-box">
+      <a href="index.html" class="logo" style="margin-bottom:28px;"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true" width="30" height="30">
+        <rect x="4" y="5" width="7" height="23" rx="1.5" fill="currentColor"/>
+        <rect x="12.5" y="8" width="6" height="20" rx="1.5" fill="var(--accent)"/>
+        <rect x="20" y="4" width="8" height="24" rx="1.5" transform="rotate(8 24 16)" fill="var(--gold)"/>
+      </svg> Tòme</a>
+      <div class="steps-dots"><span class="on" id="dot1"></span><span id="dot2"></span></div>
+
+      <form id="signup-form" novalidate>
+        <!-- Étape 1 : rôle -->
+        <div id="step1">
+          <h1>Créer un compte.</h1>
+          <p style="color:var(--ink-soft);margin:10px 0 26px;">Qui êtes-vous ? Votre espace sera configuré en conséquence.</p>
+          <div class="roles" role="radiogroup" aria-label="Type de compte">
+            <div class="role"><input type="radio" name="role" id="r-eleve" value="eleve" checked><label for="r-eleve"><strong>Élève</strong><span>J'apprends et je cherche des missions</span></label></div>
+            <div class="role"><input type="radio" name="role" id="r-enseignant" value="enseignant"><label for="r-enseignant"><strong>Enseignant·e</strong><span>J'enseigne et je crée des contenus</span></label></div>
+            <div class="role"><input type="radio" name="role" id="r-ecole" value="ecole"><label for="r-ecole"><strong>École</strong><span>Je gère un établissement</span></label></div>
+            <div class="role"><input type="radio" name="role" id="r-partenaire" value="partenaire"><label for="r-partenaire"><strong>Partenaire</strong><span>Je propose des missions</span></label></div>
+          </div>
+          <button type="button" class="btn btn-primary btn-block" style="margin-top:24px;" id="next">Continuer</button>
+        </div>
+
+        <!-- Étape 2 : informations -->
+        <div id="step2" hidden>
+          <h1 id="step2-title">Vos informations.</h1>
+          <p style="color:var(--ink-soft);margin:10px 0 26px;"><a href="#" id="back" style="color:var(--accent);font-weight:600;">← Changer de profil</a></p>
+          <div class="form-grid">
+            <div class="alert err" id="signup-error" role="alert"></div>
+
+            <div class="form-row">
+              <div class="field"><label for="prenom">Prénom</label><input id="prenom" name="prenom" autocomplete="given-name" required></div>
+              <div class="field"><label for="nom">Nom</label><input id="nom" name="nom" autocomplete="family-name" required></div>
+            </div>
+
+            <div class="role-fields" data-for="eleve">
+              <div class="form-row">
+                <div class="field"><label for="classe">Classe</label><select id="classe" name="classe"><option>7e AF</option><option>8e AF</option><option>9e AF</option><option>NS1</option><option>NS2</option><option>NS3</option><option>NS4</option><option>Université</option></select></div>
+                <div class="field"><label for="dep-eleve">Département</label><select id="dep-eleve" name="departement_eleve"><option>Artibonite</option><option>Centre</option><option>Grand'Anse</option><option>Nippes</option><option>Nord</option><option>Nord-Est</option><option>Nord-Ouest</option><option>Ouest</option><option>Sud</option><option>Sud-Est</option></select></div>
+              </div>
+              <div class="field"><label for="ecole-eleve">École</label><input id="ecole-eleve" name="ecole" placeholder="Tapez le nom de votre école"></div>
+            </div>
+
+            <div class="role-fields" data-for="enseignant">
+              <div class="field"><label for="matieres">Matières enseignées</label><input id="matieres" name="matieres" placeholder="Ex. mathématiques, physique"></div>
+              <div class="field"><label for="etab-ens">Établissement</label><input id="etab-ens" name="etablissement" placeholder="Où enseignez-vous ?"></div>
+            </div>
+
+            <div class="role-fields" data-for="ecole">
+              <div class="field"><label for="nom-ecole">Nom de l'établissement</label><input id="nom-ecole" name="nom_ecole" placeholder="Tapez le nom de l'établissement"></div>
+              <div class="form-row">
+                <div class="field"><label for="commune">Commune</label><input id="commune" name="commune"></div>
+                <div class="field"><label for="dep-ecole">Département</label><select id="dep-ecole" name="departement_ecole"><option>Artibonite</option><option>Centre</option><option>Grand'Anse</option><option>Nippes</option><option>Nord</option><option>Nord-Est</option><option>Nord-Ouest</option><option>Ouest</option><option>Sud</option><option>Sud-Est</option></select></div>
+              </div>
+              <div class="field"><label for="fonction">Votre fonction</label><input id="fonction" name="fonction" placeholder="Ex. directeur·rice, censeur"></div>
+            </div>
+
+            <div class="role-fields" data-for="partenaire">
+              <div class="field"><label for="organisation">Organisation</label><input id="organisation" name="organisation" placeholder="Entreprise, ONG ou votre nom"></div>
+              <div class="form-row">
+                <div class="field"><label for="type-part">Type</label><select id="type-part" name="type_partenaire"><option>Entreprise</option><option>ONG ou association</option><option>Membre de la diaspora</option><option>Institution publique</option></select></div>
+                <div class="field"><label for="pays">Pays</label><input id="pays" name="pays" value="Haïti"></div>
+              </div>
+            </div>
+
+            <div class="field"><label for="email">Adresse e-mail</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="vous@exemple.com"></div>
+            <div class="field"><label for="password">Mot de passe</label><input id="password" name="password" type="password" autocomplete="new-password" minlength="8" required><span class="hint">8 caractères minimum.</span></div>
+            <label class="check"><input type="checkbox" name="cgu" required> J'accepte les conditions d'utilisation et la politique de confidentialité de Tòme.</label>
+            <button type="submit" class="btn btn-primary btn-block">Créer mon compte</button>
+          </div>
+        </div>
+      </form>
+
+      <div id="signup-done" hidden>
+        <h1>Bienvenue sur Tòme.</h1>
+        <p style="color:var(--ink-soft);margin:10px 0 22px;">Votre compte est créé. Voici votre adresse Tòme :</p>
+        <div class="addr-card"><span data-addr></span></div>
+        <p style="color:var(--ink-soft);margin:18px 0 26px;font-size:15px;">Elle vous permet de vous connecter et de recevoir des messages de vos enseignants, de votre école et des autres membres, dans la messagerie Tòme. Notez-la bien.</p>
+        <div id="done-secours" hidden style="margin:-6px 0 22px;">
+          <p style="color:var(--ink-soft);margin-bottom:10px;font-size:15px;"><strong>Votre code de secours.</strong> Si vous oubliez votre mot de passe, il vous permettra d'en choisir un nouveau. Recopiez-le dans un cahier ou prenez-le en photo : il ne sera plus affiché.</p>
+          <div class="addr-card"><span data-secours></span></div>
+        </div>
+        <p class="alert ok show" id="done-ecole" hidden style="margin:-8px 0 22px;"></p>
+        <a class="btn btn-primary btn-block" href="index.html">Accéder à mon espace</a>
+      </div>
+
+      <p class="alt">Déjà inscrit ? <a href="connexion.html">Se connecter</a></p>
+    </div>
+  </div>
+</div>
+<script src="js/ecole-choix.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('signup-form');
+  const choixEleve = TomeEcoleChoix(document.getElementById('ecole-eleve'), { departement: () => document.getElementById('dep-eleve').value });
+  const choixEcole = TomeEcoleChoix(document.getElementById('nom-ecole'), {
+    departement: () => '',
+    onChoix: e => { if (!e) return; document.getElementById('commune').value = e.commune || ''; if (e.departement) document.getElementById('dep-ecole').value = e.departement; }
+  });
+  const s1 = document.getElementById('step1'), s2 = document.getElementById('step2');
+  const err = document.getElementById('signup-error');
+  const titles = { eleve: 'Votre profil d\'élève.', enseignant: 'Votre profil d\'enseignant·e.', ecole: 'Votre établissement.', partenaire: 'Votre organisation.' };
+  const show = m => { err.textContent = m; err.classList.add('show'); };
+
+  const pre = new URLSearchParams(location.search).get('role');
+  if (pre && form.querySelector('#r-' + pre)) form.querySelector('#r-' + pre).checked = true;
+
+  const role = () => form.role.value;
+  const goto = n => {
+    s1.hidden = n !== 1; s2.hidden = n !== 2;
+    document.getElementById('dot2').classList.toggle('on', n === 2);
+    if (n === 2) {
+      document.querySelectorAll('.role-fields').forEach(f => f.classList.toggle('show', f.dataset.for === role()));
+      document.getElementById('step2-title').textContent = titles[role()];
+      document.getElementById('prenom').focus();
+    }
+  };
+  document.getElementById('next').addEventListener('click', () => goto(2));
+  document.getElementById('back').addEventListener('click', e => { e.preventDefault(); goto(1); });
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    err.classList.remove('show');
+    const r = role();
+    const data = { role: r };
+    form.querySelectorAll('#step2 input, #step2 select').forEach(el => {
+      const box = el.closest('.role-fields');
+      if (box && box.dataset.for !== r) return;
+      if (el.type === 'checkbox') return;
+      if (el.name) data[el.name] = el.value.trim();
+    });
+    const choix = r === 'eleve' ? choixEleve : r === 'ecole' ? choixEcole : null;
+    if (choix && choix.id()) data.ecole_id = choix.id();
+    if (!data.prenom || !data.nom) return show('Indiquez votre prénom et votre nom.');
+    if (!/^\S+@\S+\.\S+$/.test(data.email)) return show('Entrez une adresse e-mail valide.');
+    if ((data.password || '').length < 8) return show('Le mot de passe doit contenir au moins 8 caractères.');
+    if (!form.cgu.checked) return show('Vous devez accepter les conditions d\'utilisation.');
+    const btn = form.querySelector('button[type=submit]');
+    btn.disabled = true; btn.textContent = 'Création du compte…';
+    try {
+      const res = await TomeAuth.request(TOME_CONFIG.routes.signup, data);
+      TomeAuth.save(res.token, res.user);
+      const dest = TomeAuth.dashboardFor(res.user.role || r);
+      if (!res.user.adresse) { location.href = dest; return; }
+      document.getElementById('signup-form').hidden = true;
+      document.querySelector('.steps-dots').hidden = true;
+      document.querySelector('.auth-box .alt').hidden = true;
+      const done = document.getElementById('signup-done');
+      done.querySelector('[data-addr]').textContent = res.user.adresse;
+      if (res.code_secours) { done.querySelector('[data-secours]').textContent = res.code_secours; document.getElementById('done-secours').hidden = false; }
+      done.querySelector('a').href = dest;
+      const note = r === 'eleve' && data.ecole_id ? 'Votre école doit confirmer votre inscription. Ensuite, vos bulletins apparaîtront dans « Mes notes ».'
+        : r === 'ecole' ? 'L’équipe Tòme vérifie votre compte école avant de vous ouvrir la gestion des élèves et des bulletins. Vous recevrez un message.' : '';
+      if (note) { const n = document.getElementById('done-ecole'); n.textContent = note; n.hidden = false; }
+      done.hidden = false;
+    } catch (ex) {
+      show(ex.message || 'Inscription impossible. Réessayez.');
+      btn.disabled = false; btn.textContent = 'Créer mon compte';
+    }
+  });
+
+  if (pre) goto(2);
+});
+</script>
+
+<script src="js/tome.js"></script>
+</body>
+</html>

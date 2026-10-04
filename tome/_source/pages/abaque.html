@@ -1,0 +1,172 @@
+@title: Abaque | Atelier Tòme
+@desc: Abaque, le tableur de Tòme, avec les statistiques Mesure : formules, graphiques, tests, régression, qualité.
+@layout: app
+@role:
+@sidebar: [("mon-espace","home","Mon espace"),("messagerie.html","mail","Messagerie"),("group","Atelier"),("atelier.html","code","Accueil de l'Atelier"),("atelier-code.html","code","Code"),("abaque.html","chart","Abaque et Mesure"),("plume.html","pen","Plume"),("group","Ressources"),("encyclopedie.html","book","Encyclopédie")]
+    <div class="ab-top">
+      <button class="app-menu" data-app-menu aria-label="Menu">{{icon:menu:20}}</button>
+      <div class="ab-brand"><span class="eyebrow"><a href="atelier.html">Atelier</a> · Abaque</span><input id="wb-title" class="nb-title ab-title" aria-label="Nom du classeur" spellcheck="false"></div>
+      <button class="tbtn" id="session-toggle" title="Afficher les résultats Mesure">{{icon:chart:15}}Session Mesure <span id="session-count"></span></button>
+    </div>
+
+    <nav class="ab-menus" aria-label="Menus">
+      <div class="menu"><button>Fichier</button><div class="menu-pop">
+        <button data-action="nouveau">Nouveau classeur</button>
+        <button data-action="ouvrir">Ouvrir un fichier… <kbd>.abk .csv .xlsx .ods</kbd></button>
+        <button data-action="exemple">Charger un exemple</button>
+        <hr>
+        <button data-action="abk">Enregistrer (.abk) <kbd>Ctrl S</kbd></button>
+        <button data-action="xlsx">Exporter en Excel (.xlsx)</button>
+        <button data-action="ods">Exporter en LibreOffice (.ods)</button>
+        <button data-action="csv">Exporter la feuille en .csv</button>
+        <hr>
+        <button data-action="espace_save">Sauvegarder dans mon espace Tòme</button>
+        <button data-action="espace_open">Ouvrir depuis mon espace Tòme</button>
+      </div></div>
+      <div class="menu"><button>Édition</button><div class="menu-pop">
+        <button data-action="annuler">Annuler <kbd>Ctrl Z</kbd></button>
+        <button data-action="retablir">Rétablir <kbd>Ctrl Y</kbd></button>
+        <hr>
+        <button data-action="effacer">Effacer la sélection <kbd>Suppr</kbd></button>
+        <button data-action="bas">Recopier vers le bas <kbd>Ctrl D</kbd></button>
+        <button data-action="droite">Recopier vers la droite <kbd>Ctrl R</kbd></button>
+        <hr>
+        <button data-action="tri_asc">Trier par cette colonne (croissant)</button>
+        <button data-action="tri_desc">Trier par cette colonne (décroissant)</button>
+      </div></div>
+      <div class="menu"><button>Formules</button><div class="menu-pop">
+        <button data-action="fonctions">Insérer une fonction…</button>
+        <button data-action="aide">Comment écrire une formule</button>
+      </div></div>
+      <span class="ab-sep"></span>
+      <div class="menu mesure"><button>Statistiques</button><div class="menu-pop">
+        <button data-analyse="descriptives">Statistiques descriptives</button>
+        <button data-analyse="frequences">Tableau de fréquences</button>
+        <button data-analyse="correlation">Corrélation</button>
+        <button data-analyse="normalite">Test de normalité</button>
+        <button data-analyse="icmoy">Intervalle de confiance d'une moyenne</button>
+      </div></div>
+      <div class="menu mesure"><button>Tests</button><div class="menu-pop">
+        <button data-analyse="t1">Test t à 1 échantillon</button>
+        <button data-analyse="t2">Test t à 2 échantillons</button>
+        <button data-analyse="tp">Test t apparié</button>
+        <button data-analyse="f2">Test F de 2 variances</button>
+        <hr>
+        <button data-analyse="p1">Test de proportion (1 échantillon)</button>
+        <button data-analyse="p2">Test de proportion (2 échantillons)</button>
+        <button data-analyse="chi2">Khi-deux d'indépendance</button>
+        <hr>
+        <button data-analyse="anova">ANOVA à un facteur</button>
+        <button data-analyse="regression">Régression linéaire</button>
+      </div></div>
+      <div class="menu mesure"><button>Qualité</button><div class="menu-pop">
+        <button data-analyse="imr">Carte de contrôle I-MR</button>
+        <button data-analyse="xbarr">Carte de contrôle X̄-R</button>
+        <button data-analyse="pchart">Carte de contrôle P</button>
+        <button data-analyse="capa">Analyse de capabilité</button>
+        <button data-analyse="pareto">Diagramme de Pareto</button>
+      </div></div>
+      <div class="menu mesure"><button>Graphiques</button><div class="menu-pop">
+        <button data-analyse="g_hist">Histogramme</button>
+        <button data-analyse="g_box">Boîtes à moustaches</button>
+        <button data-analyse="g_nuage">Nuage de points</button>
+        <button data-analyse="g_serie">Série chronologique</button>
+        <button data-analyse="g_barres">Diagramme en barres</button>
+        <button data-analyse="g_secteurs">Diagramme circulaire</button>
+      </div></div>
+    </nav>
+
+    <div class="ab-tools" role="toolbar" aria-label="Mise en forme">
+      <button class="tbtn icon" id="fmt-b" title="Gras (Ctrl B)"><b>G</b></button>
+      <button class="tbtn icon" id="fmt-i" title="Italique (Ctrl I)"><i>I</i></button>
+      <button class="tbtn icon" id="fmt-pct" title="Pourcentage">%</button>
+      <button class="tbtn icon" id="fmt-dec-moins" title="Moins de décimales">,0</button>
+      <button class="tbtn icon" id="fmt-dec-plus" title="Plus de décimales">,00</button>
+      <button class="tbtn icon" data-align="left" title="Aligner à gauche">⇤</button>
+      <button class="tbtn icon" data-align="center" title="Centrer">↔</button>
+      <button class="tbtn icon" data-align="right" title="Aligner à droite">⇥</button>
+      <label class="tbtn icon color" title="Couleur de fond"><input type="color" id="fmt-bg" value="#fff3c4"><span>▣</span></label>
+      <button class="tbtn" id="fmt-clear" title="Effacer la mise en forme">Effacer le format</button>
+    </div>
+
+    <div class="ab-fx">
+      <input id="namebox" class="namebox" aria-label="Cellule" spellcheck="false">
+      <span class="fx-label">fx</span>
+      <input id="fx" class="fx" aria-label="Contenu ou formule" spellcheck="false" autocomplete="off" placeholder="Valeur ou formule (=SOMME(A2:A10))">
+    </div>
+
+    <div class="ab-main">
+      <div class="grid-wrap" id="grid-wrap" tabindex="0" aria-label="Feuille de calcul">
+        <div class="grid-layer" id="grid-layer">
+          <table class="grid" id="grid"></table>
+          <div class="fill-handle" id="fill-handle" title="Faites glisser pour recopier" hidden></div>
+        </div>
+      </div>
+
+      <aside class="session" id="session" aria-label="Session Mesure">
+        <header class="session-head">
+          <h2>{{icon:chart:18}} Session Mesure</h2>
+          <div>
+            <button class="tbtn" id="session-print" title="Imprimer ou enregistrer en PDF">PDF</button>
+            <button class="tbtn" id="session-clear">Effacer</button>
+            <button class="tbtn icon" id="session-close" aria-label="Fermer">×</button>
+          </div>
+        </header>
+        <div class="session-body" id="session-body"></div>
+      </aside>
+    </div>
+
+    <div class="ab-bottom">
+      <div class="tabs-row"><div id="tabs" class="sheet-tabs"></div><button class="tbtn icon" id="add-sheet" title="Ajouter une feuille">+</button><button class="tbtn icon" id="del-sheet" title="Supprimer la feuille">−</button></div>
+      <div class="ab-status"><span id="status"></span><button class="tbtn" id="add-rows">+ 100 lignes</button><button class="tbtn" id="add-cols">+ 5 colonnes</button></div>
+    </div>
+
+    <input type="file" id="open-file" accept=".abk,.csv,.tsv,.txt,.xlsx,.xls,.ods" hidden>
+
+    <dialog class="dlg" id="dlg-analyse" aria-labelledby="dlg-analyse-t">
+      <form method="dialog">
+        <div class="dlg-head"><h2 id="dlg-analyse-t">Analyse</h2><button type="button" data-close aria-label="Fermer">×</button></div>
+        <div class="dlg-body">
+          <div class="form-grid" id="analyse-form"></div>
+          <p class="small" id="analyse-help"></p>
+          <div style="display:flex;gap:8px;justify-content:flex-end;"><button type="button" class="tbtn" data-close>Annuler</button><button class="tbtn primary" id="analyse-ok">Calculer</button></div>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="dlg" id="dlg-fn" aria-labelledby="dlg-fn-t">
+      <div class="dlg-head"><h2 id="dlg-fn-t">Insérer une fonction</h2><button data-close aria-label="Fermer">×</button></div>
+      <div class="dlg-body">
+        <div class="install-row"><input id="fn-search" placeholder="Rechercher (ex. moyenne, SI, RECHERCHEV)"></div>
+        <div class="fn-list" id="fn-list"></div>
+      </div>
+    </dialog>
+
+    <dialog class="dlg" id="dlg-espace" aria-labelledby="dlg-espace-t">
+      <div class="dlg-head"><h2 id="dlg-espace-t">Ouvrir depuis mon espace</h2><button data-close aria-label="Fermer">×</button></div>
+      <div class="dlg-body"><div class="nb-list" id="espace-list"></div></div>
+    </dialog>
+
+    <dialog class="dlg" id="dlg-aide" aria-labelledby="dlg-aide-t">
+      <div class="dlg-head"><h2 id="dlg-aide-t">Écrire une formule</h2><button data-close aria-label="Fermer">×</button></div>
+      <div class="dlg-body prose-small">
+        <p>Une formule commence toujours par <code>=</code>. Exemples :</p>
+        <ul>
+          <li><code>=A2+B2</code> additionne deux cellules.</li>
+          <li><code>=SOMME(C2:C30)</code> additionne une plage. On peut aussi écrire les noms anglais : <code>=SUM(C2:C30)</code>.</li>
+          <li><code>=MOYENNE(C2:C30)</code>, <code>=MAX(...)</code>, <code>=ECARTYPE(...)</code>, <code>=NB.SI(C2:C30;"&gt;=10")</code></li>
+          <li><code>=SI(C2&gt;=10;"Admis";"Ajourné")</code></li>
+        </ul>
+        <p>Séparez les arguments par <code>;</code> (ou <code>,</code>). Dans une formule, les nombres décimaux s'écrivent avec un point : <code>=A2*1.5</code>. Dans une cellule simple, la virgule fonctionne : <code>12,5</code>.</p>
+        <p>Le signe <code>$</code> bloque une référence lors de la recopie : <code>=$B$1*A2</code>. Pour recopier une formule, tirez le petit carré en bas à droite de la sélection, ou utilisez Ctrl D.</p>
+        <p>Pendant la saisie d'une formule, cliquez sur une cellule pour insérer sa référence.</p>
+        <p><strong>Pour les statistiques Mesure</strong> : écrivez le nom de chaque variable en ligne 1 et les données en dessous, une colonne par variable.</p>
+      </div>
+    </dialog>
+
+<script src="https://cdn.jsdelivr.net/npm/@formulajs/formulajs@4.6.1/lib/browser/formula.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js" defer></script>
+<script src="js/abaque-moteur.js"></script>
+<script src="js/mesure-stats.js"></script>
+<script src="js/mesure-graphiques.js"></script>
+<script src="js/abaque.js" defer></script>

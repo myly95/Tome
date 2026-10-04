@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atelier | Tòme</title>
+<meta name="description" content="L&#x27;Atelier Tòme : coder, concevoir et expérimenter directement dans le navigateur.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tome.css">
+</head>
+<body>
+<div class="app" data-role="">
+  <aside class="sidebar">
+    <a href="index.html" class="logo"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true" width="30" height="30">
+        <rect x="4" y="5" width="7" height="23" rx="1.5" fill="currentColor"/>
+        <rect x="12.5" y="8" width="6" height="20" rx="1.5" fill="var(--accent)"/>
+        <rect x="20" y="4" width="8" height="24" rx="1.5" transform="rotate(8 24 16)" fill="var(--gold)"/>
+      </svg> Tòme</a>
+    <nav>
+      <a href="mon-espace"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg>Mon espace</a><a href="messagerie.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Messagerie</a><div class="group">Atelier</div><a href="atelier.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6l-6 6 6 6M16 6l6 6-6 6"/></svg>Accueil de l'Atelier</a><a href="atelier-code.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6l-6 6 6 6M16 6l6 6-6 6"/></svg>Code</a><a href="abaque.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Abaque et Mesure</a><a href="plume.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>Plume</a><a href="atelier.html#design"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="1.2"/><circle cx="17.5" cy="10.5" r="1.2"/><circle cx="8.5" cy="7.5" r="1.2"/><circle cx="6.5" cy="12.5" r="1.2"/><path d="M12 2a10 10 0 0 0 0 20c1.4 0 2-1 2-2 0-.6-.3-1-.6-1.4-.3-.4-.5-.8-.5-1.3 0-1.1.9-2 2-2h2.3A4.8 4.8 0 0 0 22 10.6C22 5.8 17.5 2 12 2z"/></svg>Design</a><a href="atelier.html#labo"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.7 1.7 0 0 0 6 21h12a1.7 1.7 0 0 0 1.5-2.5L14 9V3"/><path d="M7 15h10"/></svg>Labo</a><div class="group">Ressources</div><a href="encyclopedie.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2"/><path d="M19 19v3H6a2 2 0 0 1-2-2"/></svg>Encyclopédie</a><a href="examens.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg>Entraînements</a>
+    </nav>
+    <div class="me">
+      <div class="avatar" data-user-initials>IN</div>
+      <div class="who"><strong data-user-name>Invité</strong><span data-user-role></span><span class="addr" data-user-address></span></div>
+      <button data-logout aria-label="Se déconnecter" title="Se déconnecter"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/></svg></button>
+    </div>
+  </aside>
+  <main class="main">
+    <div class="topbar">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <button class="app-menu" data-app-menu aria-label="Menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+        <div>
+          <span class="eyebrow">Atelier</span>
+          <h1>Créer, coder, expérimenter.</h1>
+          <p>Tout fonctionne dans le navigateur : rien à installer, sur ordinateur comme sur téléphone.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="spaces">
+      <a href="atelier-code.html" class="space feature" id="code">
+        <div class="sicon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6l-6 6 6 6M16 6l6 6-6 6"/></svg></div>
+        <h2>Code</h2>
+        <p>Des carnets façon Jupyter pour Python, R, SQL, JavaScript et le web. Bibliothèques scientifiques, graphiques, export .ipynb.</p>
+        <div class="langs"><span class="chip">Python</span><span class="chip">R</span><span class="chip">SQL</span><span class="chip">JavaScript</span><span class="chip">HTML / CSS</span></div>
+      </a>
+      <a href="abaque.html" class="space" id="abaque">
+        <div class="sicon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div>
+        <h2>Abaque</h2>
+        <p>Le tableur de Tòme : formules (SOMME, MOYENNE, SI, RECHERCHEV…), plusieurs feuilles, Excel et CSV, format .abk.</p>
+        <div class="langs"><span class="chip">.abk</span><span class="chip">.xlsx</span><span class="chip">.csv</span><span class="chip">.ods</span></div>
+      </a>
+      <a href="abaque.html?mesure" class="space" id="mesure">
+        <div class="sicon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.7 1.7 0 0 0 6 21h12a1.7 1.7 0 0 0 1.5-2.5L14 9V3"/><path d="M7 15h10"/></svg></div>
+        <h2>Mesure</h2>
+        <p>Les statistiques façon Minitab : descriptives, tests t, khi-deux, ANOVA, régression, cartes de contrôle, capabilité, graphiques.</p>
+        <div class="langs"><span class="chip">Statistiques</span><span class="chip">Qualité</span></div>
+      </a>
+      <a href="plume.html" class="space" id="plume">
+        <div class="sicon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></div>
+        <h2>Plume</h2>
+        <p>Le traitement de texte : titres, listes, images, tableaux, export Word (.docx) et PDF, format .plm.</p>
+        <div class="langs"><span class="chip">.plm</span><span class="chip">.docx</span><span class="chip">PDF</span></div>
+      </a>
+      <div class="space soon" id="design">
+        <span class="chip badge">Bientôt</span>
+        <div class="sicon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="1.2"/><circle cx="17.5" cy="10.5" r="1.2"/><circle cx="8.5" cy="7.5" r="1.2"/><circle cx="6.5" cy="12.5" r="1.2"/><path d="M12 2a10 10 0 0 0 0 20c1.4 0 2-1 2-2 0-.6-.3-1-.6-1.4-.3-.4-.5-.8-.5-1.3 0-1.1.9-2 2-2h2.3A4.8 4.8 0 0 0 22 10.6C22 5.8 17.5 2 12 2z"/></svg></div>
+        <h2>Design</h2>
+        <p>Un espace pour concevoir des visuels, des affiches et des interfaces.</p>
+      </div>
+      <div class="space soon" id="labo">
+        <span class="chip badge">Bientôt</span>
+        <div class="sicon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.7 1.7 0 0 0 6 21h12a1.7 1.7 0 0 0 1.5-2.5L14 9V3"/><path d="M7 15h10"/></svg></div>
+        <h2>Labo</h2>
+        <p>Des expériences de sciences interactives, pour manipuler ce qu'on apprend en classe.</p>
+      </div>
+    </div>
+
+    <div class="panels">
+      <div class="panel">
+        <div class="panel-head"><h2>Mes carnets récents</h2><a href="atelier-code.html">Ouvrir Code</a></div>
+        <div class="list" id="recent"></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h2>Démarrer un carnet</h2></div>
+        <div class="list">
+          <div class="row"><div class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6l-6 6 6 6M16 6l6 6-6 6"/></svg></div><div class="grow"><div class="t">Python</div><div class="s">numpy, pandas, scikit-learn, matplotlib…</div></div><a class="chip accent" href="atelier-code.html?nouveau=python">Créer</a></div>
+          <div class="row"><div class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div><div class="grow"><div class="t">R</div><div class="s">Statistiques et graphiques, paquets CRAN</div></div><a class="chip accent" href="atelier-code.html?nouveau=r">Créer</a></div>
+          <div class="row"><div class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2"/><path d="M19 19v3H6a2 2 0 0 1-2-2"/></svg></div><div class="grow"><div class="t">SQL</div><div class="s">Base SQLite dans le navigateur</div></div><a class="chip accent" href="atelier-code.html?nouveau=sql">Créer</a></div>
+          <div class="row"><div class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></div><div class="grow"><div class="t">JavaScript et web</div><div class="s">Scripts, pages HTML et CSS</div></div><a class="chip accent" href="atelier-code.html?nouveau=javascript">Créer</a></div>
+        </div>
+      </div>
+    </div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const box = document.getElementById('recent');
+  let data = null;
+  try { data = JSON.parse(localStorage.getItem('tome_atelier_v1') || 'null'); } catch (e) {}
+  const names = { python: 'Python', r: 'R', sql: 'SQL', javascript: 'JavaScript', html: 'Web' };
+  const list = data ? Object.values(data.notebooks || {}).sort((a, b) => (b.updated || 0) - (a.updated || 0)).slice(0, 5) : [];
+  if (!list.length) {
+    box.innerHTML = '<p style="color:var(--muted);padding:12px 0;">Aucun carnet pour le moment. Créez votre premier carnet à droite.</p>';
+    return;
+  }
+  list.forEach(nb => {
+    const row = document.createElement('a');
+    row.className = 'row';
+    row.href = 'atelier-code.html?carnet=' + encodeURIComponent(nb.id);
+    const when = nb.updated ? new Date(nb.updated).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' }) : '';
+    row.innerHTML = '<div class="grow"><div class="t"></div><div class="s"></div></div><span class="chip"></span>';
+    row.querySelector('.t').textContent = nb.title || 'Carnet sans titre';
+    row.querySelector('.s').textContent = (nb.cells || []).length + ' cellules' + (when ? ' · modifié le ' + when : '');
+    row.querySelector('.chip').textContent = names[nb.lang] || 'Python';
+    box.appendChild(row);
+  });
+});
+</script>
+
+  </main>
+</div>
+
+<script src="js/tome.js"></script>
+</body>
+</html>

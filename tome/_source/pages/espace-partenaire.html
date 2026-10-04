@@ -1,0 +1,53 @@
+@title: Espace partenaire | Tòme
+@desc: Espace partenaire Tòme.
+@layout: app
+@role: partenaire
+@sidebar: [('espace-partenaire.html', 'home', 'Accueil'), ('#missions', 'brief', 'Mes missions'), ('#candidatures', 'users', 'Candidatures'), ('#livrables', 'check', 'Livrables'), ('tome-ia.html', 'chat', 'Tòme IA'), ('messagerie.html', 'mail', 'Messagerie'), ('group', 'Organisation'), ('compte.html', 'cog', 'Paramètres')]
+    <div class="topbar">
+      <div style="display:flex;gap:14px;align-items:flex-start;">
+        <button class="app-menu" data-app-menu aria-label="Menu">{{icon:menu:20}}</button>
+        <div>
+          <h1>Bonjour, <span data-user-first>Invité</span>.</h1>
+          <p>Suivez vos missions et les élèves qui les réalisent.</p>
+        </div>
+      </div>
+      <div class="right">
+        <span class="demo-note" hidden>Données de démonstration</span>
+        <a href="#" class="btn btn-primary">{{icon:plus:16}} Publier une mission</a>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="k">Missions actives</div><div class="v">3</div><div class="d">1 en recrutement</div></div>
+      <div class="stat"><div class="k">Élèves mobilisés</div><div class="v">19</div><div class="d">sur 4 missions</div></div>
+      <div class="stat"><div class="k">Livrables à valider</div><div class="v">5</div><div class="d">dont 2 urgents</div></div>
+      <div class="stat"><div class="k">Budget engagé</div><div class="v">48 000 HTG</div><div class="d">ce trimestre</div></div>
+    </div>
+    <div class="panels">
+      <div class="stack">
+        <div class="panel" id="missions">
+          <div class="panel-head"><h2>Mes missions</h2><a href="#">Toutes</a></div>
+          <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Mission</th><th>Élèves</th><th>Statut</th></tr></thead><tbody><tr><td><strong>Traduction de fiches produits</strong></td><td>4 / 5</td><td><span class="chip ok">En cours</span></td></tr><tr><td><strong>Enquête de satisfaction, Cap-Haïtien</strong></td><td>12 / 12</td><td><span class="chip ok">En cours</span></td></tr><tr><td><strong>Visuels réseaux sociaux</strong></td><td>0 / 2</td><td><span class="chip gold">Recrutement</span></td></tr><tr><td><strong>Transcription d'entretiens</strong></td><td>3 / 3</td><td><span class="chip ">Terminée</span></td></tr></tbody></table></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><h2>Livrables validés</h2><span style="color:var(--muted);font-size:14px;">Par mois</span></div>
+          <div class="chart"><div class="col"><i class="" style="height:29%"></i><span>Mai</span></div><div class="col"><i class="" style="height:50%"></i><span>Juin</span></div><div class="col"><i class="" style="height:43%"></i><span>Juil.</span></div><div class="col"><i class="" style="height:79%"></i><span>Août</span></div><div class="col"><i class="" style="height:64%"></i><span>Sept.</span></div><div class="col"><i class="hl" style="height:100%"></i><span>Oct.</span></div></div>
+        </div>
+      </div>
+      <div class="stack">
+        <div class="panel" id="candidatures">
+          <div class="panel-head"><h2>Nouvelles candidatures</h2><a href="#">Voir</a></div>
+          <div class="list">
+            <div class="row"><div class="ico">{{icon:users}}</div><div class="grow"><div class="t">Mirlande C.</div><div class="s">Visuels réseaux sociaux · NS3</div></div><a href="#" class="chip accent">Examiner</a></div>
+            <div class="row"><div class="ico">{{icon:users}}</div><div class="grow"><div class="t">Kervens B.</div><div class="s">Visuels réseaux sociaux · Université</div></div><a href="#" class="chip accent">Examiner</a></div>
+          </div>
+        </div>
+        <div class="panel" id="livrables">
+          <div class="panel-head"><h2>Livrables à valider</h2></div>
+          <div class="list">
+            <div class="row"><div class="ico">{{icon:check}}</div><div class="grow"><div class="t">Fiches 31 à 40</div><div class="s">Traduction · remis hier</div></div><span class="chip gold">Urgent</span></div>
+            <div class="row"><div class="ico">{{icon:check}}</div><div class="grow"><div class="t">Questionnaires, lot 3</div><div class="s">Enquête · remis aujourd&#39;hui</div></div><span class="chip gold">Urgent</span></div>
+            <div class="row"><div class="ico">{{icon:check}}</div><div class="grow"><div class="t">Fiches 41 à 50</div><div class="s">Traduction · remis aujourd&#39;hui</div></div><span class="chip">À valider</span></div>
+          </div>
+        </div>
+      </div>
+    </div>

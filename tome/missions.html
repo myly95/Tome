@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Missions | Tòme</title>
+<meta name="description" content="Des missions rémunérées pour les élèves haïtiens, proposées par des partenaires d&#x27;Haïti et de la diaspora.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tome.css">
+</head>
+<body>
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="index.html" class="logo" aria-label="Tòme, accueil">
+      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true" width="30" height="30">
+        <rect x="4" y="5" width="7" height="23" rx="1.5" fill="currentColor"/>
+        <rect x="12.5" y="8" width="6" height="20" rx="1.5" fill="var(--accent)"/>
+        <rect x="20" y="4" width="8" height="24" rx="1.5" transform="rotate(8 24 16)" fill="var(--gold)"/>
+      </svg>
+      Tòme
+    </a>
+    <ul>
+      <li><a href="encyclopedie.html">Encyclopédie</a></li>
+      <li><a href="bibliotheque.html">Bibliothèque</a></li>
+      <li><a href="examens.html">Examens</a></li>
+      <li><a href="missions.html">Missions</a></li>
+      <li><a href="a-propos.html">À propos</a></li>
+      <li><a href="carrieres.html">Carrières</a></li>
+      <li class="menu-only"><a href="connexion.html">Se connecter</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="connexion.html" class="btn btn-ghost">Se connecter</a>
+      <a href="inscription.html" class="btn btn-primary">Commencer</a>
+      <button class="menu-toggle" aria-label="Ouvrir le menu" data-menu-toggle>
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="wrap reveal">
+      <span class="eyebrow">Missions</span>
+      <h1>Votre savoir a de la valeur. <em>Faites-le compter.</em></h1>
+      <p>Des entreprises et organisations confient de vraies tâches aux élèves de Tòme. Les élèves apprennent, construisent leur expérience et sont payés.</p>
+      <div class="ctas">
+        <a href="inscription.html?role=eleve" class="btn btn-primary">Je veux des missions</a>
+        <a href="#partenaires" class="btn btn-ghost">Je veux proposer une mission</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block tight" data-filter-scope>
+    <div class="wrap">
+      <div class="toolbar">
+        <div class="section-head" style="margin-bottom:0;">
+          <span class="eyebrow">Exemples de missions</span>
+          <h2>Ce que les élèves réalisent.</h2>
+        </div>
+        <div class="chips">
+          <button class="chip on" data-filter="tous">Toutes</button>
+          <button class="chip" data-filter="langues">Langues</button>
+          <button class="chip" data-filter="donnees">Données</button>
+          <button class="chip" data-filter="creation">Création</button>
+          <button class="chip" data-filter="tutorat">Tutorat</button>
+        </div>
+      </div>
+      <div class="grid-3">
+        <div class="card" data-filter-item data-tags="langues">
+          <div class="chips"><span class="chip accent">Langues</span><span class="chip ok">Rémunérée</span></div>
+          <h3 style="margin-top:16px;">Traduction français / anglais</h3>
+          <p>Traduire des fiches produits, des documents associatifs ou des sous-titres.</p>
+          <div class="meta"><span>2 à 5 h</span><span>À distance</span></div>
+        </div>
+        <div class="card" data-filter-item data-tags="langues">
+          <div class="chips"><span class="chip accent">Langues</span><span class="chip ok">Rémunérée</span></div>
+          <h3 style="margin-top:16px;">Transcription audio</h3>
+          <p>Transcrire des entretiens et des enregistrements, avec relecture par un mentor.</p>
+          <div class="meta"><span>1 à 3 h</span><span>À distance</span></div>
+        </div>
+        <div class="card" data-filter-item data-tags="donnees">
+          <div class="chips"><span class="chip accent">Données</span><span class="chip ok">Rémunérée</span></div>
+          <h3 style="margin-top:16px;">Saisie et vérification de données</h3>
+          <p>Numériser des registres, nettoyer des tableaux, vérifier des informations.</p>
+          <div class="meta"><span>3 à 6 h</span><span>À distance</span></div>
+        </div>
+        <div class="card" data-filter-item data-tags="donnees">
+          <div class="chips"><span class="chip accent">Données</span><span class="chip ok">Rémunérée</span></div>
+          <h3 style="margin-top:16px;">Enquêtes de terrain</h3>
+          <p>Collecter des réponses dans sa communauté pour des études d'ONG ou d'entreprises.</p>
+          <div class="meta"><span>1 à 2 jours</span><span>Sur place</span></div>
+        </div>
+        <div class="card" data-filter-item data-tags="creation">
+          <div class="chips"><span class="chip accent">Création</span><span class="chip ok">Rémunérée</span></div>
+          <h3 style="margin-top:16px;">Visuels et réseaux sociaux</h3>
+          <p>Créer des visuels simples et des publications pour de petites entreprises locales.</p>
+          <div class="meta"><span>2 à 4 h</span><span>À distance</span></div>
+        </div>
+        <div class="card" data-filter-item data-tags="tutorat">
+          <div class="chips"><span class="chip accent">Tutorat</span><span class="chip ok">Rémunérée</span></div>
+          <h3 style="margin-top:16px;">Soutien scolaire</h3>
+          <p>Accompagner des élèves plus jeunes en mathématiques, en français ou en sciences.</p>
+          <div class="meta"><span>Hebdomadaire</span><span>En ligne ou sur place</span></div>
+        </div>
+      </div>
+      <p class="empty">Aucune mission dans cette catégorie pour le moment.</p>
+    </div>
+  </section>
+
+  <section class="block steps-section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Comment ça marche</span>
+        <h2>De la candidature au paiement.</h2>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><div class="n">i.</div><h3>Compléter son profil</h3><p>Compétences, langues, disponibilités. Les missions proposées s'adaptent à votre profil.</p></div>
+        <div class="step reveal"><div class="n">ii.</div><h3>Réaliser la mission</h3><p>Un mentor vous accompagne et relit votre travail avant la livraison au partenaire.</p></div>
+        <div class="step reveal"><div class="n">iii.</div><h3>Être payé</h3><p>Une fois la mission validée, le paiement est versé et la mission s'ajoute à votre portfolio.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="partenaires" style="padding-top:110px;">
+    <div class="wrap">
+      <div class="cta-band reveal">
+        <div>
+          <span class="eyebrow">Pour les partenaires</span>
+          <h2 style="margin-top: 12px;">Confiez une mission à de jeunes talents haïtiens.</h2>
+          <p>Entreprises, ONG, membres de la diaspora : publiez une mission, nous sélectionnons et accompagnons les élèves.</p>
+        </div>
+        <div class="actions">
+          <a href="inscription.html?role=partenaire" class="btn btn-primary">Devenir partenaire</a>
+          <a href="mailto:partenaires@tome.ht" class="btn btn-ghost">Nous écrire</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <a href="index.html" class="logo">
+          <svg viewBox="0 0 32 32" fill="none" aria-hidden="true" width="30" height="30">
+        <rect x="4" y="5" width="7" height="23" rx="1.5" fill="currentColor"/>
+        <rect x="12.5" y="8" width="6" height="20" rx="1.5" fill="var(--accent)"/>
+        <rect x="20" y="4" width="8" height="24" rx="1.5" transform="rotate(8 24 16)" fill="var(--gold)"/>
+      </svg>
+          Tòme
+        </a>
+        <p class="tag">Compagnie haïtienne pour l'intégration et le développement de l'éducation haïtienne.</p>
+      </div>
+      <div>
+        <h4>Plateforme</h4>
+        <ul>
+          <li><a href="encyclopedie.html">Encyclopédie</a></li>
+          <li><a href="bibliotheque.html">Bibliothèque</a></li>
+          <li><a href="examens.html">Examens</a></li>
+          <li><a href="missions.html">Missions</a></li>
+          <li><a href="index.html#profils">Pour qui</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Entreprise</h4>
+        <ul>
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="carrieres.html">Carrières</a></li>
+          <li><a href="mailto:contact@tome.ht">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Compte</h4>
+        <ul>
+          <li><a href="connexion.html">Se connecter</a></li>
+          <li><a href="inscription.html">Créer un compte</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© <span data-year>2026</span> Tòme. Tous droits réservés.</span>
+      <span>Milot, Haïti</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/tome.js"></script>
+</body>
+</html>
